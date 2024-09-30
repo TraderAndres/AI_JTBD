@@ -1,0 +1,778 @@
+{
+    "name": "Finance",
+    "description": "",
+    "children": [
+        {
+            "name": "Banking",
+            "description": "This sector encompasses institutions that accept deposits, offer loans, and provide various financial services, including retail banking, commercial banking, and investment banking.",
+            "children": [
+                {
+                    "name": "Retail Banking",
+                    "description": "This subsector focuses on providing financial services to individual consumers, including savings and checking accounts, personal loans, mortgages, and credit cards.",
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "children": [
+                                {
+                                    "name": "Personal Banker",
+                                    "description": "A personal banker assists individual customers with their banking needs, including opening accounts, providing advice on savings and investment options, and facilitating loan applications. They serve as the primary point of contact for customers, helping to build relationships and ensure customer satisfaction.",
+                                    "children": [
+                                        {
+                                            "name": "Providing Financial Solutions",
+                                            "description": "The process of identifying clients' financial needs and recommending appropriate banking products or services, such as savings accounts, loans, or credit cards, to help them achieve their financial goals. This involves assessing the client's financial situation, understanding their aspirations, and ensuring they have access to suitable financial resources.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Ensuring Customer Satisfaction",
+                                            "description": "The act of maintaining ongoing communication with clients to address their concerns, answer questions, and provide support related to their banking experience. This includes proactively seeking feedback, resolving issues promptly, and fostering a positive relationship to enhance loyalty and trust in the banking institution.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Loan Officer",
+                                    "description": "A loan officer evaluates and approves loans for individuals seeking personal loans, mortgages, or credit cards. They assess the creditworthiness of applicants, gather necessary financial information, and guide customers through the loan application process to ensure they understand the terms and obligations involved.",
+                                    "children": [
+                                        {
+                                            "name": "Helping Customers Secure Financing",
+                                            "description": "The process of assisting customers in obtaining loans for various needs, such as purchasing a home or financing a vehicle. This involves evaluating their financial situation, explaining loan options, guiding them through the application process, and ensuring they understand the terms and conditions of the loan.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Financial Guidance",
+                                            "description": "The act of advising customers on their financial decisions and helping them understand the implications of taking on debt. This includes assessing their current financial health, discussing budgeting and repayment strategies, and educating them about different financial products to help them make informed choices.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "children": [
+                                {
+                                    "name": "Individual Consumer",
+                                    "description": "This role encompasses everyday people who require banking services for personal finance management. They benefit from savings accounts for day-to-day transactions, personal loans for significant purchases, and credit cards for convenience and building credit history.",
+                                    "children": [
+                                        {
+                                            "name": "Building Savings",
+                                            "description": "The process of accumulating money in a savings account to reach specific financial goals. This involves regularly depositing funds, monitoring account growth, and adjusting contributions as necessary to ensure that desired savings targets are met over time.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Securing Loans",
+                                            "description": "The act of obtaining financial support through various loan products, such as personal loans or mortgages, to fund significant purchases or investments. This includes assessing financial needs, comparing loan options, applying for the selected loan, and managing repayment plans to ensure affordability and avoid debt issues.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Homebuyer",
+                                    "description": "This role pertains to individuals looking to purchase a home. They rely on retail banking services for mortgages and related financial products, which facilitate the home-buying process and help manage long-term financial commitments.",
+                                    "children": [
+                                        {
+                                            "name": "Obtaining Financing",
+                                            "description": "The process of securing a mortgage or personal loan from a bank or financial institution to facilitate the purchase of a home. This involves researching various lending options, comparing interest rates and terms, filling out application forms, and providing necessary documentation to demonstrate financial stability and creditworthiness.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Ensuring Financial Affordability",
+                                            "description": "The assessment of one\u2019s financial situation to determine how much can be safely spent on a home purchase. This includes evaluating income, expenses, savings, and existing debts, as well as calculating potential monthly mortgage payments and considering additional costs such as property taxes and insurance to avoid financial strain after the purchase.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Commercial Banking",
+                    "description": "This area deals with providing financial services to businesses and corporations, such as business loans, treasury services, and deposit accounts tailored for business needs.",
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "children": [
+                                {
+                                    "name": "Relationship Manager",
+                                    "description": "This role focuses on building and maintaining relationships with business clients to understand their financial needs and provide tailored banking solutions, such as loans and credit facilities.",
+                                    "children": [
+                                        {
+                                            "name": "Providing Financial Solutions",
+                                            "description": "The Relationship Manager identifies the unique financial needs of business clients, assessing their requirements for loans, treasury services, and deposit accounts. They then present tailored financial products that align with the client\u2019s objectives, ensuring that the solutions offered support the client\u2019s operational and growth strategies.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Building Client Relationships",
+                                            "description": "The Relationship Manager actively engages with clients to foster trust and understanding. This involves regular communication, scheduled meetings, and personalized service to comprehend the client's evolving needs. By nurturing these relationships, they aim to enhance client loyalty and satisfaction, ultimately leading to long-term partnerships.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Credit Analyst",
+                                    "description": "This position involves assessing the creditworthiness of businesses applying for loans, analyzing financial statements, and determining the risk level associated with lending to specific clients.",
+                                    "children": [
+                                        {
+                                            "name": "Assessing Creditworthiness",
+                                            "description": "The process of evaluating the financial health and credit history of potential borrowers. This involves analyzing financial statements, credit reports, and other relevant data to determine the likelihood of repayment. The aim is to make informed lending decisions that minimize risk and enhance the bank's ability to serve its business clients.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Recommending Loan Structures",
+                                            "description": "The ability to propose suitable loan terms and structures that align with a client's financial situation and business objectives. This includes determining the amount, interest rate, repayment schedule, and any collateral requirements. The goal is to create financing solutions that meet the needs of businesses while ensuring the bank's interests are protected.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "children": [
+                                {
+                                    "name": "Small Business Owner",
+                                    "description": "This role involves managing a small to medium-sized enterprise and seeking financial support for operational expenses, capital investments, or expansion. Small business owners often rely on commercial banking services for business loans, merchant accounts, and cash management solutions tailored to their specific needs.",
+                                    "children": [
+                                        {
+                                            "name": "Obtaining Business Financing",
+                                            "description": "The process of seeking and securing funds to support business operations, growth, or investments. This involves identifying the specific financial needs of the business, researching available loan options and terms, preparing necessary documentation, and submitting loan applications to financial institutions. The ultimate goal is to acquire the necessary capital to achieve business objectives without compromising financial stability.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Improving Cash Flow Management",
+                                            "description": "The effort to monitor, analyze, and optimize the inflow and outflow of cash within the business. This includes tracking receivables and payables, forecasting cash flow needs, implementing strategies to accelerate collections, and managing expenses effectively. The aim is to ensure there is sufficient liquidity to meet operational demands and invest in opportunities for growth.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Corporate Treasurer",
+                                    "description": "This role is responsible for managing a corporation's finances, including investment strategies, cash flow management, and risk assessment. Corporate treasurers utilize commercial banking services such as treasury management, credit facilities, and investment products to optimize the financial health and liquidity of their organization.",
+                                    "children": [
+                                        {
+                                            "name": "Ensuring Liquidity",
+                                            "description": "The ability to maintain sufficient cash flow within the organization to meet short-term obligations. This involves monitoring cash positions, forecasting cash flow needs, and planning for unexpected expenses to ensure that the company can operate smoothly without financial disruptions.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Optimizing Capital Structure",
+                                            "description": "The process of determining the best mix of debt and equity financing to minimize the cost of capital while maximizing financial stability and flexibility. This includes analyzing funding options, assessing financial risks, and making strategic decisions regarding investments and borrowing to support the company\u2019s long-term growth objectives.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Investment Banking",
+                    "description": "This subsector specializes in services that help companies raise capital and provide advisory services for mergers and acquisitions, underwriting new debt and equity securities, and facilitating the sale of securities.",
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "children": [
+                                {
+                                    "name": "Investment Banker",
+                                    "description": "This role involves advising clients on mergers and acquisitions, raising capital through the issuance of stocks and bonds, and developing financial strategies to help businesses grow. Investment bankers work closely with corporate executives to understand their financial needs and provide tailored solutions.",
+                                    "children": [
+                                        {
+                                            "name": "Facilitating Capital Raising",
+                                            "description": "The process of helping clients identify their funding needs and structuring financial solutions that allow them to access capital markets. This includes preparing necessary documentation, conducting due diligence, and presenting the investment opportunity to potential investors, ensuring that the client secures the required funds efficiently and effectively.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Advising on Mergers and Acquisitions",
+                                            "description": "The act of providing expert guidance to clients on strategic transactions, including mergers, acquisitions, and divestitures. This involves analyzing market conditions, valuing target companies, negotiating terms, and assisting in the execution of the deal, ultimately helping clients achieve their strategic objectives while maximizing shareholder value.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Equity Research Analyst",
+                                    "description": "This role focuses on analyzing stocks and providing investment recommendations based on financial data and market trends. Equity research analysts support investment banking by providing insights that inform clients' decisions on capital raising and investment strategies. They produce reports that help clients understand the potential risks and rewards of various investment options.",
+                                    "children": [
+                                        {
+                                            "name": "Evaluating Investment Opportunities",
+                                            "description": "The process of analyzing various financial instruments and market trends to determine the potential for profitable investments. This involves assessing the financial health of companies, understanding market conditions, and predicting future performance to guide clients in making informed investment decisions.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Strategic Insights",
+                                            "description": "The act of delivering in-depth analysis and recommendations based on financial data and market research to support clients in their strategic planning. This includes identifying key trends, evaluating competitive positioning, and advising on mergers and acquisitions, ensuring that clients can navigate complex financial landscapes effectively.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "children": [
+                                {
+                                    "name": "Corporate Finance Manager",
+                                    "description": "This role involves overseeing a company's financial activities, including capital structure, funding strategies, and financial planning. They rely on investment banking services for raising capital through debt or equity offerings and for conducting mergers and acquisitions.",
+                                    "children": [
+                                        {
+                                            "name": "Facilitating Capital Raising",
+                                            "description": "The process of identifying potential funding sources, such as investors or financial institutions, and preparing necessary documentation and presentations to secure financing. This involves analyzing the financial needs of the company and aligning them with suitable capital markets options, which may include debt, equity, or hybrid instruments.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Evaluating Mergers and Acquisitions",
+                                            "description": "The systematic assessment of potential acquisition targets or merger candidates by conducting thorough due diligence. This includes analyzing financial statements, market conditions, and competitive landscapes to determine the strategic fit and financial viability, ultimately leading to informed decision-making regarding transaction pricing and structure.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Private Equity Analyst",
+                                    "description": "This professional evaluates potential investment opportunities in private companies or acquisitions. They often collaborate with investment banks for advisory services on transactions, valuations, and financing solutions to optimize their investment strategies.",
+                                    "children": [
+                                        {
+                                            "name": "Evaluating Investment Opportunities",
+                                            "description": "The process of systematically assessing potential investments to determine their viability and expected returns. This includes analyzing financial statements, market conditions, and competitive positioning to make informed decisions about where to allocate capital.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Structuring Financial Transactions",
+                                            "description": "The task of designing and organizing financial deals to optimize outcomes for both the investors and the companies involved. This involves negotiating terms, determining pricing, and ensuring compliance with regulatory requirements to facilitate successful capital raises or mergers and acquisitions.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Investment Services",
+            "description": "This includes firms that manage investments, such as mutual funds, hedge funds, private equity, and investment advisory services aimed at maximizing returns for clients.",
+            "children": [
+                {
+                    "name": "Mutual Funds",
+                    "description": "Investment vehicles that pool money from multiple investors to purchase a diversified portfolio of stocks, bonds, or other securities, managed by professional fund managers.",
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "children": [
+                                {
+                                    "name": "Portfolio Manager",
+                                    "description": "This role involves making investment decisions and managing a mutual fund's portfolio to achieve the best possible returns for investors. Portfolio managers analyze market trends, conduct research on various securities, and adjust the fund's holdings based on performance and market conditions.",
+                                    "children": [
+                                        {
+                                            "name": "Achieving Investment Growth",
+                                            "description": "The process of selecting and managing a diversified portfolio of investments tailored to client goals. This involves analyzing market trends, performing due diligence on potential securities, and making informed decisions to maximize returns while balancing risk.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Client Confidence",
+                                            "description": "The act of ensuring that clients feel secure and informed about their investments. This includes regular communication regarding portfolio performance, explaining investment strategies, and addressing client concerns to build trust and satisfaction in the management of their assets.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Research Analyst",
+                                    "description": "Research analysts support portfolio managers by conducting in-depth analysis of potential investment opportunities. They gather and evaluate financial data, assess industry trends, and provide insights and recommendations to aid in the decision-making process for the mutual fund's investments.",
+                                    "children": [
+                                        {
+                                            "name": "Identifying Investment Opportunities",
+                                            "description": "The process of systematically researching and analyzing various financial instruments, market trends, and economic indicators to discover potential investments that align with clients' return expectations and risk profiles. This includes assessing the performance of different asset classes, evaluating fund managers, and recognizing emerging sectors or industries that could yield profitable investments.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Investment Insights",
+                                            "description": "The act of synthesizing research findings and market data into actionable insights and recommendations for clients or internal stakeholders. This involves preparing detailed reports, presentations, or briefings that clarify complex financial information, highlight key trends, and explain potential risks, thereby enabling informed decision-making regarding investment strategies and allocations.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "children": [
+                                {
+                                    "name": "Individual Investor",
+                                    "description": "An individual investor is a person who allocates personal funds into mutual funds as a means of achieving financial growth and retirement savings. They seek diversification and professional management of their investments to maximize returns while managing risk.",
+                                    "children": [
+                                        {
+                                            "name": "Achieving Financial Growth",
+                                            "description": "The process of increasing the value of investments over time through the selection of mutual funds that align with the investor's risk tolerance and financial goals. This involves researching fund performance, understanding market trends, and selecting funds that have demonstrated consistent returns.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Diversifying Investment Portfolio",
+                                            "description": "The action of spreading investments across various mutual funds to minimize risk and enhance potential returns. This includes analyzing different asset classes, sectors, and geographical regions to create a balanced portfolio that can withstand market fluctuations while capitalizing on growth opportunities.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Financial Advisor",
+                                    "description": "A financial advisor is a professional who helps clients, including individuals and institutions, navigate investment options. They recommend mutual funds as part of a broader investment strategy aimed at achieving specific financial goals, such as wealth accumulation, retirement planning, or education funding.",
+                                    "children": [
+                                        {
+                                            "name": "Achieving Optimal Investment Returns",
+                                            "description": "The Financial Advisor works to maximize clients' investment portfolios by selecting mutual funds that align with their risk tolerance and financial goals. This involves analyzing historical performance, understanding market trends, and continuously monitoring fund performance to ensure clients are on track to meet their investment objectives.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Tailored Investment Strategies",
+                                            "description": "The Financial Advisor develops customized investment plans that cater to individual client needs by assessing their financial situation, investment timelines, and goals. This process includes recommending specific mutual funds, diversifying investments across various asset classes, and adjusting strategies as market conditions change to optimize returns for clients.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Hedge Funds",
+                    "description": "Investment funds that employ various strategies to generate high returns for their investors, often using leverage, derivatives, and short-selling, and typically catering to accredited investors.",
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "children": [
+                                {
+                                    "name": "Portfolio Manager",
+                                    "description": "This role involves developing and implementing investment strategies to manage a hedge fund's portfolio. Portfolio managers analyze market trends, assess risks, and make investment decisions to optimize returns for investors.",
+                                    "children": [
+                                        {
+                                            "name": "Achieving Optimal Returns",
+                                            "description": "The process of identifying investment opportunities that are likely to yield the highest possible returns for clients. This involves analyzing market trends, utilizing quantitative models, and assessing risk factors to construct a portfolio that aligns with clients\u2019 financial goals.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Managing Investment Risks",
+                                            "description": "The practice of identifying, analyzing, and mitigating potential risks associated with investment strategies. This includes employing various risk management techniques, such as diversification, hedging, and monitoring market conditions, to protect client investments and ensure stability in returns.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Risk Analyst",
+                                    "description": "A risk analyst evaluates and manages the potential risks associated with investment strategies employed by hedge funds. This role includes monitoring market conditions, analyzing financial data, and recommending risk mitigation strategies to protect the fund's assets.",
+                                    "children": [
+                                        {
+                                            "name": "Identifying Risks",
+                                            "description": "The process of systematically recognizing potential threats that could negatively impact the performance of investment portfolios. This involves analyzing market conditions, economic indicators, and specific asset characteristics to highlight vulnerabilities.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Ensuring Compliance",
+                                            "description": "The act of verifying that all investment activities adhere to regulatory standards and internal policies. This includes assessing trading practices, monitoring fund operations, and implementing necessary controls to mitigate legal and reputational risks.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "children": [
+                                {
+                                    "name": "Institutional Investor",
+                                    "description": "This role includes organizations such as pension funds, endowments, and insurance companies that invest substantial amounts of capital in hedge funds to achieve higher returns and diversify their investment portfolios.",
+                                    "children": [
+                                        {
+                                            "name": "Achieving Optimal Portfolio Diversification",
+                                            "description": "The process of analyzing various asset classes and investment opportunities to construct a portfolio that mitigates risk while maximizing return potential. This involves selecting investments across different sectors, geographies, and strategies to ensure a balanced exposure.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Identifying High-Performing Investment Strategies",
+                                            "description": "The systematic evaluation of various investment approaches, such as long/short equity, event-driven, or global macro strategies, to determine which ones have historically delivered superior returns. This includes back-testing performance data and assessing risk-adjusted returns to align with investment goals.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "High-Net-Worth Individual (HNWI)",
+                                    "description": "This role refers to affluent individuals who have significant personal wealth and seek to invest in hedge funds for access to sophisticated investment strategies, potential high returns, and exclusive investment opportunities.",
+                                    "children": [
+                                        {
+                                            "name": "Achieving High Returns",
+                                            "description": "The process of utilizing hedge fund strategies to maximize investment profitability. This involves selecting funds that employ various investment approaches, such as leverage and derivatives, to enhance potential returns while balancing risk exposure according to personal financial goals.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Protecting Wealth",
+                                            "description": "The implementation of investment strategies that safeguard assets against market volatility and economic downturns. This includes identifying hedge funds that focus on capital preservation and risk management techniques, ensuring that wealth is not only maintained but also strategically positioned for future growth.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Private Equity",
+                    "description": "Investment funds that acquire private companies or take public companies private, with the goal of restructuring and improving their operations to increase value before selling them or taking them public again.",
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "children": [
+                                {
+                                    "name": "Private Equity Analyst",
+                                    "description": "This role involves conducting in-depth financial analysis and due diligence on potential investment opportunities. Private Equity Analysts assess market trends, evaluate the financial performance of target companies, and provide insights that inform investment decisions made by senior management.",
+                                    "children": [
+                                        {
+                                            "name": "Evaluating Investment Opportunities",
+                                            "description": "The process of systematically analyzing potential investment targets to assess their financial health, market position, and growth prospects. This involves conducting due diligence, reviewing financial statements, and understanding the competitive landscape to make informed investment decisions.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Enhancing Operational Efficiency",
+                                            "description": "The act of implementing strategies and initiatives to improve the performance and productivity of portfolio companies. This includes identifying inefficiencies, streamlining processes, and adopting best practices to maximize value creation and ensure sustainable growth before exiting the investment.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Portfolio Manager",
+                                    "description": "The Portfolio Manager is responsible for overseeing a private equity fund's investment portfolio. This role includes strategizing investment approaches, managing relationships with portfolio companies, and ultimately guiding the restructuring and growth efforts to enhance the value of the investments before exit.",
+                                    "children": [
+                                        {
+                                            "name": "Maximizing Investment Returns",
+                                            "description": "The process of strategically allocating capital to various investment opportunities that are projected to yield the highest possible returns for clients. This involves analyzing market trends, assessing risk profiles, and selecting investments that align with the clients' financial goals.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Enhancing Portfolio Value",
+                                            "description": "The action of actively restructuring and improving the operations of acquired private companies to increase their overall market value. This includes identifying inefficiencies, implementing operational improvements, and preparing the company for a profitable exit, either through a sale or public offering.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "children": [
+                                {
+                                    "name": "Private Equity Analyst",
+                                    "description": "This role involves conducting due diligence on potential investment opportunities, analyzing financial data, and evaluating the performance of portfolio companies. Private equity analysts play a crucial part in identifying undervalued companies and assisting in the investment decision-making process.",
+                                    "children": [
+                                        {
+                                            "name": "Evaluating Investment Opportunities",
+                                            "description": "The process of analyzing potential investment targets to assess their financial health, market position, and growth potential. This involves gathering data, performing due diligence, and utilizing financial modeling techniques to project future performance and identify risks associated with the investment.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Structuring Financial Deals",
+                                            "description": "The ability to create and negotiate the terms of investment agreements, including capital structure, pricing, and exit strategies. This includes aligning the interests of all parties involved, ensuring compliance with regulations, and maximizing the potential return on investment while mitigating risks.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Portfolio Manager",
+                                    "description": "A portfolio manager in private equity is responsible for overseeing the investment strategy and managing the fund's portfolio of investments. They work closely with the management teams of portfolio companies to implement operational improvements and drive value creation, ultimately aiming to achieve high returns for investors.",
+                                    "children": [
+                                        {
+                                            "name": "Improving Investment Performance",
+                                            "description": "The process of analyzing various investment opportunities to identify those that are likely to yield higher returns. This involves conducting thorough due diligence on potential investments, evaluating market trends, and assessing the financial health of target companies to inform decision-making. The goal is to achieve better financial outcomes for the fund and its investors by strategically choosing investments that align with the firm's objectives.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Enhancing Operational Efficiency",
+                                            "description": "The act of assessing and restructuring the operations of portfolio companies to streamline processes and reduce costs. This includes identifying inefficiencies, implementing best practices, and optimizing resource allocation. By improving operational efficiency, the Portfolio Manager aims to increase the overall value of the investments, making them more attractive for future sale or public offering.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Insurance",
+            "description": "This sector covers companies that provide risk management through underwriting policies, including life insurance, health insurance, property and casualty insurance, and reinsurance services.",
+            "children": [
+                {
+                    "name": "Life Insurance",
+                    "description": "This involves underwriting policies that provide financial protection to beneficiaries upon the death of the insured individual, including whole life, term life, and universal life insurance products.",
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "children": [
+                                {
+                                    "name": "Underwriter",
+                                    "description": "This role involves assessing insurance applications to determine the risk involved in insuring an individual. Underwriters evaluate information related to health, lifestyle, and other factors, and decide whether to approve coverage and at what premium rate.",
+                                    "children": [
+                                        {
+                                            "name": "Assessing Risk",
+                                            "description": "The underwriter evaluates the potential risks associated with an applicant's health, lifestyle, and financial background. This involves analyzing medical histories, lifestyle choices, and any relevant external factors to determine the likelihood of a claim being made. Based on this assessment, the underwriter assigns a risk classification that informs the terms and pricing of the insurance policy.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Coverage Solutions",
+                                            "description": "The underwriter designs and proposes insurance products that align with the assessed risk levels of applicants. This includes determining policy limits, premiums, and any exclusions that may apply. The goal is to ensure that the coverage offered meets the needs of the customer while also maintaining the financial stability of the insurance company.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Actuary",
+                                    "description": "Actuaries analyze financial risks using mathematics, statistics, and financial theory. They play a crucial role in the life insurance sector by calculating premiums, reserves, and ensuring the company remains financially stable while adequately covering policyholder claims.",
+                                    "children": [
+                                        {
+                                            "name": "Assessing Risk",
+                                            "description": "The process of evaluating potential risks associated with life insurance policies, which involves analyzing various factors such as the insured's age, health status, lifestyle choices, and historical data. This helps to determine the likelihood of a claim being made and informs the pricing of the policy.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Calculating Premiums",
+                                            "description": "The act of determining the appropriate premium amounts that policyholders must pay for their life insurance coverage. This involves using statistical models and actuarial principles to ensure that premiums are sufficient to cover expected claims while remaining competitive and affordable for customers.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "children": [
+                                {
+                                    "name": "Policyholder",
+                                    "description": "This individual purchases a life insurance policy to ensure financial security for their beneficiaries in the event of their death. They seek peace of mind knowing that their loved ones will receive financial support during a difficult time.",
+                                    "children": [
+                                        {
+                                            "name": "Protecting Financial Security",
+                                            "description": "The policyholder seeks to ensure that their beneficiaries will receive a predetermined financial payout in the event of their death. This involves selecting the appropriate life insurance policy that meets their financial needs and goals, evaluating coverage amounts, and ensuring that premiums are affordable and sustainable over time.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Peace of Mind",
+                                            "description": "The policyholder aims to alleviate concerns about the financial future of their loved ones after their passing. This includes understanding the terms of the life insurance policy, confirming that it aligns with their family\u2019s financial situation, and feeling secure in the knowledge that their family will be taken care of in their absence.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Financial Planner",
+                                    "description": "This professional assists individuals and families in selecting appropriate life insurance products that align with their financial goals and protection needs. They analyze clients' financial situations to recommend suitable coverage options, ensuring clients are adequately protected.",
+                                    "children": [
+                                        {
+                                            "name": "Ensuring Financial Security for Clients",
+                                            "description": "The process of evaluating clients' financial situations to recommend appropriate life insurance products that will provide financial support to their beneficiaries in the event of their death. This involves analyzing clients' income, expenses, and long-term goals to determine the right coverage amount and type.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Creating Comprehensive Insurance Plans",
+                                            "description": "The ability to design tailored life insurance strategies that align with clients' financial objectives, including retirement planning and wealth transfer. This requires assessing various life insurance options, such as term, whole, or universal life policies, and integrating them into the overall financial plan to meet clients' needs effectively.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Health Insurance",
+                    "description": "This encompasses policies that cover medical expenses for individuals, including hospital stays, doctor visits, and prescription medications, designed to protect against high healthcare costs.",
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "children": [
+                                {
+                                    "name": "Health Insurance Underwriter",
+                                    "description": "This role involves evaluating insurance applications, assessing risk factors, and determining coverage terms and premiums for health insurance policies. Underwriters play a critical role in ensuring that the insurance company remains financially viable while providing necessary coverage to policyholders.",
+                                    "children": [
+                                        {
+                                            "name": "Evaluating Risk",
+                                            "description": "The process of assessing the potential health risks associated with policy applicants to determine the likelihood of claims being made. This involves analyzing medical histories, lifestyle choices, and demographic factors to quantify the risk and set appropriate premium rates.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Developing Underwriting Guidelines",
+                                            "description": "The creation of standardized criteria and processes that govern how health insurance applications are assessed. This includes establishing thresholds for acceptable risks, determining necessary documentation, and ensuring compliance with regulatory requirements to facilitate consistent decision-making across the underwriting team.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Claims Adjuster",
+                                    "description": "A claims adjuster investigates health insurance claims to determine the extent of the insurer's liability. This role includes reviewing medical records, interviewing claimants, and coordinating with healthcare providers to ensure accurate and fair claim settlements. Adjusters help maintain the integrity of the claims process and support policyholders in receiving their entitled benefits.",
+                                    "children": [
+                                        {
+                                            "name": "Determining Claim Validity",
+                                            "description": "The process of assessing submitted claims to verify that they meet the criteria set forth by the insurance policy. This involves reviewing documentation, speaking with policyholders, and consulting medical professionals to ensure the claim is legitimate and aligns with policy terms.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Timely Compensation",
+                                            "description": "The act of ensuring that approved claims are paid out promptly to policyholders or healthcare providers. This includes calculating the appropriate compensation amount, processing payments efficiently, and communicating with claimants to confirm receipt and understanding of the payment.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "children": [
+                                {
+                                    "name": "Individual Policyholder",
+                                    "description": "This role represents individuals who purchase health insurance policies to cover their medical expenses. They seek protection against high healthcare costs associated with hospital stays, doctor visits, and prescription medications.",
+                                    "children": [
+                                        {
+                                            "name": "Protecting Health and Financial Stability",
+                                            "description": "The process of ensuring that personal health is safeguarded against unexpected medical expenses. This involves selecting the appropriate health insurance policy that covers necessary medical services, thus preventing financial strain due to high healthcare costs.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Obtaining Timely Medical Care",
+                                            "description": "The act of securing access to healthcare services when needed, facilitated by having the right health insurance coverage. This includes understanding and utilizing benefits to ensure quick appointments with healthcare providers, effective management of prescriptions, and timely access to treatments, thereby promoting overall well-being.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Family Coverage Seeker",
+                                    "description": "This role includes individuals who are looking to secure comprehensive health insurance for their entire family. They prioritize policies that provide adequate coverage for various medical needs, ensuring that all family members are protected against unexpected healthcare expenses.",
+                                    "children": [
+                                        {
+                                            "name": "Protecting Family Health",
+                                            "description": "The Family Coverage Seeker aims to ensure that their family has access to necessary medical services without incurring overwhelming costs. This involves evaluating different health insurance plans, comparing coverage options, and selecting a policy that provides comprehensive benefits for routine care, emergencies, and specialized treatments. By doing so, they can mitigate financial risks associated with unexpected health issues.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Obtaining Financial Security",
+                                            "description": "The Family Coverage Seeker focuses on acquiring insurance policies that provide financial stability in the event of unforeseen circumstances, such as illness or accidents. This job entails assessing various insurance products, determining appropriate coverage levels for life and health insurance, and ensuring that these policies align with their family's financial goals. Ultimately, this helps in safeguarding their family's financial future against significant healthcare expenses.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Property and Casualty Insurance",
+                    "description": "This includes insurance products that protect against financial loss due to damage to property or liability for accidents that may cause injury or damage to others, such as homeowners, auto, and commercial insurance.",
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "children": [
+                                {
+                                    "name": "Underwriter",
+                                    "description": "An underwriter in property and casualty insurance evaluates risk and determines the terms and premiums of insurance policies. They analyze applications, conduct risk assessments, and ensure that policies are priced appropriately to manage potential losses.",
+                                    "children": [
+                                        {
+                                            "name": "Assessing Risk",
+                                            "description": "Evaluating the potential risks associated with insuring a property or individual. This involves analyzing various factors such as the applicant's history, the value of the property, and external risk factors. The goal is to determine the likelihood of a claim being made and to set appropriate premiums based on that assessment.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Establishing Coverage Terms",
+                                            "description": "Defining the specific conditions and limitations of an insurance policy. This includes deciding on coverage limits, deductibles, and exclusions. By clearly outlining these terms, underwriters ensure that customers understand what is covered and help prevent disputes during the claims process.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Claims Adjuster",
+                                    "description": "A claims adjuster investigates insurance claims to determine the extent of the insurer's liability. They assess property damage, interview claimants and witnesses, and review relevant documents to ensure fair and accurate settlements for claims made under property and casualty policies.",
+                                    "children": [
+                                        {
+                                            "name": "Determining Claim Validity",
+                                            "description": "The process of evaluating the details of a claim submitted by a policyholder to assess whether it meets the criteria set forth in the insurance policy. This involves reviewing documentation, interviewing relevant parties, and adhering to policy guidelines to ensure that only legitimate claims are approved.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Financial Relief",
+                                            "description": "The act of facilitating the payment of approved claims to policyholders in a timely manner. This includes calculating the appropriate compensation based on the assessed damages or losses, communicating the outcome to the claimant, and ensuring that the funds are disbursed efficiently to alleviate the financial burden on the insured party.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Risk Manager",
+                                    "description": "A risk manager identifies and analyzes potential risks that could negatively impact an organization, particularly in relation to property and casualty insurance. They develop strategies to mitigate these risks, ensuring that the organization maintains adequate insurance coverage and complies with regulations.",
+                                    "children": [
+                                        {
+                                            "name": "Assessing Risk Exposure",
+                                            "description": "The process of identifying and evaluating potential risks that could lead to financial losses for the company. This involves analyzing historical data, understanding market trends, and evaluating the impact of various risk factors on different insurance products.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Implementing Risk Mitigation Strategies",
+                                            "description": "The act of developing and applying strategies to minimize identified risks. This includes creating guidelines for underwriting, establishing claims processes, and ensuring compliance with regulatory requirements to protect the organization and its policyholders from potential losses.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "children": [
+                                {
+                                    "name": "Homeowner",
+                                    "description": "This role represents individuals who purchase homeowners insurance to protect their property from risks such as fire, theft, or natural disasters. Homeowners seek peace of mind by ensuring that their investment is safeguarded against potential financial losses.",
+                                    "children": [
+                                        {
+                                            "name": "Protecting Assets",
+                                            "description": "The homeowner seeks to safeguard their home and belongings from potential risks such as theft, fire, or natural disasters. This involves selecting appropriate insurance policies that provide coverage for property damage and loss, ensuring that they have sufficient financial protection to recover in case of unforeseen events.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Mitigating Liability",
+                                            "description": "The homeowner aims to reduce the financial risks associated with accidents or injuries that may occur on their property. This includes obtaining liability insurance that covers legal fees and settlements in the event of claims made by visitors or neighbors, ultimately providing peace of mind and financial security against potential lawsuits.",
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Small Business Owner",
+                                    "description": "This role includes entrepreneurs who acquire property and casualty insurance to cover their business assets and liabilities. They rely on these insurance products to protect against risks associated with property damage, liability claims, and other unforeseen events that could impact their operations.",
+                                    "children": [
+                                        {
+                                            "name": "Protecting Assets",
+                                            "description": "The ability to secure financial investments and physical properties from potential risks, including damage, theft, or liability claims. This involves assessing the value of assets, choosing appropriate insurance policies, and ensuring comprehensive coverage to mitigate potential losses.",
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Ensuring Compliance",
+                                            "description": "The process of confirming that all insurance policies and practices meet regulatory requirements and industry standards. This includes staying informed about changes in laws, reviewing policy terms, and making necessary adjustments to maintain compliance and avoid penalties.",
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
