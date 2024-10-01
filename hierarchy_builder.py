@@ -7,13 +7,15 @@ from anytree import Node, RenderTree, PreOrderIter
 
 from llm_interface import LLMInterface
 from prompt_builder import PromptBuilder
+from utils import save_hierarchy_to_file, save_hierarchy_to_markdown
 
-# # Configure logging to display the time, log level, and message
-# logging.basicConfig(
-#     level=logging.INFO,  # Set the logging level to INFO
-#     format='%(asctime)s - %(levelname)s - %(message)s',  # Define the log message format
-#     datefmt='%Y-%m-%d %H:%M:%S'  # Define the date format
-# )
+
+# Configure logging to display the time, log level, and message
+logging.basicConfig(
+    level=logging.INFO,  # Set the logging level to INFO
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Define the log message format
+    datefmt='%Y-%m-%d %H:%M:%S'  # Define the date format
+)
 
 
 class HierarchyBuilder:
@@ -26,6 +28,8 @@ class HierarchyBuilder:
         self.prompt_builder = prompt_builder
         self.fidelity = fidelity
         self.job_nodes = []  # List to store all Job nodes
+        self.root = None
+        self.industry = None
 
     def parse_list(self, response):
         """
@@ -110,9 +114,11 @@ class HierarchyBuilder:
         """
         Constructs the full hierarchy from Industry to Jobs.
         """
-        root = Node(industry, description="Root node for industry hierarchy")
+        self.industry = industry
+        self.fidelity = fidelity
+        self.root = Node(industry, description="Root node for industry hierarchy")
         logging.info(f"Starting hierarchy build for industry: {industry}")
-        
+
         # Step 1: Get Sectors
         logging.info("Building sectors prompt.")
         sectors_prompt = self.prompt_builder.build_sectors_prompt(
@@ -124,13 +130,13 @@ class HierarchyBuilder:
 
         for sector in sectors:
             sector_node = Node(sector["name"],
-                               parent=root,
+                               parent=self.root,
                                description=sector["description"])
             logging.info(f"Processing sector: {sector['name']}")
 
             # Concatenate sector name and description
             sector_info = f"{sector['name']}: {sector['description']}"
-            
+
             # Step 2: Get Subsectors
             logging.info("Building subsectors prompt.")
             subsectors_prompt = self.prompt_builder.build_subsectors_prompt(
@@ -148,7 +154,7 @@ class HierarchyBuilder:
 
                 # Concatenate subsector name and description
                 subsector_info = f"{subsector['name']}: {subsector['description']}"
-                
+
                 # Step 3: Get End Users (Providers)
                 logging.info("Building provider end users prompt.")
                 end_users_provider_prompt = self.prompt_builder.build_end_users_provider_prompt(
@@ -187,10 +193,12 @@ class HierarchyBuilder:
                     jobs = self.parse_jobs(jobs_response)
 
                     for job in jobs:
+                        # When creating a job node, set processed=False
                         job_node = Node(
                             job["job"],
                             parent=provider_node,
-                            description=job["description"]
+                            description=job["description"],
+                            processed=False
                         )
                         logging.info(f"Added JTBD for provider: {job['job']}")
                         self.job_nodes.append(job_node)  # Store Job node
@@ -233,9 +241,26 @@ class HierarchyBuilder:
                         jtbd_node = Node(
                             jtbd["job"],
                             parent=customer_node,
-                            description=jtbd["description"]
+                            description=jtbd["description"],
+                            processed=False
                         )
                         logging.info(f"Added JTBD for customer: {jtbd['job']}")
                         self.job_nodes.append(jtbd_node)  # Store Job node
 
-        return root
+
+        # Validate all nodes have 'description' and 'processed' attributes
+        for node in PreOrderIter(self.root):
+            if not hasattr(node, 'description'):
+                node.description = "No description provided"
+            if not hasattr(node, 'processed'):
+                node.processed = False
+
+        return self.root
+
+    def save_current_hierarchy(self):
+        """
+        Placeholder for saving the current hierarchy. Implement saving logic here.
+        """
+        json_filename = f"{self.industry}_hierarchy.json"
+        save_hierarchy_to_file(self.root, json_filename)
+        save_hierarchy_to_markdown(json_filename, f"{self.industry}_hierarchy_output.md")

@@ -1,0 +1,53 @@
+# prompts/situational_and_complexity_factors.yaml
+
+description: |
+  Lists situations or complexities that could make the job more challenging, rated on a scale from 1 (worst case) to 5 (best case).
+
+prompt: |
+  Act as a(n) {end_user} who is {job} {context}. Disregard context if it is not supplied. List {n} situations a(n) {end_user} could find themselves in that would make {job} more challenging? Use the perfect experience as a baseline.
+
+  The situation will be rated by survey respondents on a scale of 1 through 5, where 1 will be the worst case and 5 being the best case. The following is an example:
+
+  | Situations/Complexities | 1 | 2 | 3 | 4 | 5 |
+  | --- | --- | --- | --- | --- | --- |
+  | Limited budget - Having a restricted budget for hiring market research firms or purchasing data can limit the depth and breadth of research conducted. | None | | | | Extensive |
+
+  In the example above, “Limited Budget” should be “Budget level for the research.” Only rating level 1 and 5 require a value. In this case, 1 is “None” and the other extreme is “Extensive.”
+
+  Therefore, the outputted result should be:
+
+  | Situations/Complexities | 1 | 2 | 3 | 4 | 5 |
+  | --- | --- | --- | --- | --- | --- |
+  | Budget level for the research | None | | | | Extensive |
+
+  Each situation could need different worst case and best case language. You will need to think that through carefully.
+
+  Always output in markdown
+
+  End user: {end_user}
+  Job: {job}
+  Context: {context}
+  n: {n}
+
+parameters:
+  end_user:
+    description: The role or title of the end user.
+    type: string
+    required: true
+  
+  job:
+    description: The high-level job or task to be analyzed.
+    type: string
+    required: true
+  
+  context:
+    description: Additional context or circumstances related to the job.
+    type: string
+    required: false  # Marked as optional if context is not always necessary
+    default: ""  # Default empty value if no context is provided
+  
+  n:
+    description: The number of situations or scenarios to list.
+    type: integer  # Updated to integer as 'n' typically represents a count
+    required: false
+    default: 5  # Default value if none is provided; adjust as needed

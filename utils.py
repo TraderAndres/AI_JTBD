@@ -1,90 +1,67 @@
 # utils.py
 import json
-
 from anytree import Node, RenderTree
 
 
 def node_to_dict(node):
     """
-    Recursively converts AnyTree nodes to dictionaries.
+    Recursively converts AnyTree nodes to dictionaries, including all relevant attributes.
     """
     return {
         "name": node.name,
-        "description": node.description if hasattr(node, 'description') else "",
+        "description": getattr(node, 'description', "No description provided"),
+        "processed": getattr(node, 'processed', False),
         "children": [node_to_dict(child) for child in node.children]
     }
 
+
 def save_hierarchy_to_file(root, filename):
-    def node_to_dict(node):
-        return {
-            "name": node.name,
-            "description": node.description,
-            "children": [node_to_dict(child) for child in node.children]
-        }
+    """
+    Saves the hierarchy to a JSON file.
+    """
     hierarchy_dict = node_to_dict(root)
     with open(filename, 'w') as f:
         json.dump(hierarchy_dict, f, indent=4)
 
-def save_hierarchy_to_text(json_filename, text_filename):
+
+def dict_to_tree(node_dict, parent=None):
+    """
+    Recursively converts a dictionary to an AnyTree Node.
+    """
+    node = Node(node_dict['name'],
+                parent=parent,
+                description=node_dict.get('description', ''),
+                processed=node_dict.get('processed', False))
+    for child in node_dict.get('children', []):
+        dict_to_tree(child, parent=node)
+    return node
+
+
+def render_hierarchy_markdown(root):
+    """
+    Renders the hierarchy as a formatted Markdown string.
+    """
+    lines = []
+    for node in root.descendants:
+        depth = node.depth  # Root node has depth 0
+        indent = '    ' * depth  # 4 spaces per level
+        line = f"{indent}- **{node.name}**: {node.description}"
+        lines.append(line)
+    # Include the root node
+    root_line = f"- **{root.name}**: {root.description}"
+    lines.insert(0, root_line)
+    return "\n".join(lines) + "\n"  # Add trailing newline
+
+
+def save_hierarchy_to_markdown(json_filename, markdown_filename):
+    """
+    Loads the hierarchy from a JSON file, converts it to Markdown, and saves it to a Markdown file.
+    """
     with open(json_filename, 'r') as f:
         hierarchy_dict = json.load(f)
 
-    def dict_to_tree(node_dict, parent=None):
-        node = Node(node_dict['name'], parent=parent, description=node_dict.get('description', ''))
-        for child in node_dict.get('children', []):
-            dict_to_tree(child, parent=node)
-        return node
-
     root = dict_to_tree(hierarchy_dict)
 
-    with open(text_filename, 'w') as f:
-        for pre, fill, node in RenderTree(root):
-            f.write(f"{pre}{node.name}\n")
-
-# def save_hierarchy_to_file(root, filename):
-#     """
-#     Saves the hierarchy to a JSON file.
-#     """
-#     hierarchy = node_to_dict(root)
-#     with open(filename, 'w', encoding='utf-8') as f:
-#         json.dump(hierarchy, f, indent=4)
-
-# def convert_hierarchy_to_text(node, level=0):
-#     """
-#     Recursively traverses the hierarchy and builds hierarchical text.
-#     """
-#     lines = []
-#     indent = '    ' * level  # 4 spaces per level for indentation
-
-#     # Format the current node's name and description
-#     if node.get("description"):
-#         # Combine the name and description with bold formatting for the name
-#         lines.append(f"{indent}- **{node['name']}**: {node['description']}")
-#     else:
-#         # Only show the name if there's no description
-#         lines.append(f"{indent}- **{node['name']}**")
-
-#     # Recursively process children, if any
-#     for child in node.get("children", []):
-#         lines.extend(convert_hierarchy_to_text(child, level + 1))
-
-#     return lines
-
-# def save_hierarchy_to_text(json_filename, text_filename):
-#     """
-#     Loads the hierarchy from a JSON file, converts it to hierarchical text,
-#     and saves it to a text file.
-#     """
-#     # Load the JSON content from the file
-#     with open(json_filename, "r", encoding='utf-8') as file:
-#         hierarchy_data = json.load(file)
-
-#     # Build the hierarchical text
-#     hierarchical_text = convert_hierarchy_to_text(hierarchy_data)
-
-#     # Join the lines into a single string
-#     final_output = "\n".join(hierarchical_text)
-
-#     # Save the hierarchical text to a file
-#     with open(text_filename, "w", encoding='utf-8') as output_file:
-#         output_file.write(final_output)
+    with open(markdown_filename, 'w') as f:
+        markdown_text = render_hierarchy_markdown(root)
+        f.write(markdown_text)

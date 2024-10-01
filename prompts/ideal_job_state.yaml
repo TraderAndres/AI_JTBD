@@ -1,0 +1,98 @@
+# prompts/ideal_job_state.yaml
+
+description: |
+  Generates a list of preferences or desires for the ideal state of the job, considering various attributes and aspects without including solutions or activities.
+
+prompt: |
+  Set the temperature to {temp}. Act as a(n) {end_user}. Consider your preferences or desires for {job}{context}, including its appearance, physical or tangible attributes, intangible attributes, its performance, what you want it to be free from, and what you would like to minimize or avoid in terms of maintenance, when using, installation, setup, risk, cost, time, waste, planning, and purchasing. Do not include solutions or activities in your output.
+
+  The ideal statements will ultimately be inserted into a survey using two different question formats. Therefore, I need you to consider this so there is no additional work needed when constructing the survey. Both questions must make sense to a reader. Examples of the two formats follow:
+
+  Format #1: “How important is it to you that you can ” [ideal statement]
+
+  Format #2: “How difficult is it for you to “ [ideal statement]
+
+  The ideal statements should be structured to fit within two question formats above.
+
+  Here are some examples and explanations of good and bad:
+
+  ##begin examples
+
+  Bad: “The software feature does not provide adequate feedback or notifications, causing the user to miss important updates or changes.” Why?: It uses the word “or” and it attempts to provide an explanation within the statement, e.g., “causing the user to miss important updates or changes.” Good: “Know you have received adequate feedback from the software feature.” Why?: It is stated in the affirmative, it is concise, and is also a desired outcome. We can ask an end user how important this is, or how difficult this is. We can compare it other discrete statements. Examples that demonstrate what to avoid: Bad: "Develop a clear understanding of your competitive landscape to inform strategic planning, avoiding blind spots and missed opportunities." Why? It appends an avoidance on the end instead of making it the primary part of the statement Bad: "Prevent security goals from becoming outdated by regularly reviewing and updating them." Why? It attempts to explain how to do so something Good:
+
+  * "Avoid misalignment of resources and priorities that could hinder revenue growth"
+
+  * "Avoid miscommunication between teams that could lead to missed opportunities or duplicated efforts"
+
+  * "Avoid customer churn by proactively addressing their concerns and needs"
+
+  * "Avoid the risk of losing market share to competitors by staying agile and responsive"
+
+  * "Avoid potential conflicts with partners and stakeholders that could damage relationships and collaboration" Why? Because the all begin with a verb that establishes what should be avoided. Bad: "You want to price your tires competitively in the market" Good: "Know your tires are priced competitively in the market" Why? It is concise Bad: "Calculate key financial metrics and ratios, such as your savings rate, debt-to-income ratio, or investment returns, to provide insights into your financial performance and goal achievement" Good: "Know the amount of financial progress you’ve made so you can identify areas for improvement, e.g., evaluate key financial metrics, talk to an advisor, etc." Why? It begins with an outcome and not a task. It appends examples when needed. It is relatively concise.
+
+  ##end examples
+
+  Please follow these instructions carefully:
+
+  * Think this through step-by-step
+
+  * Think through the perspective as a(n) {end_user}
+
+  * If the Job is about a front lawn, instead of saying “I would like the front lawn to appear lush, green, and well-manicured,” break these attributes into separate thoughts like “appears lush, appears green, appears well-manicured.”
+
+  * Output these statements as Jobs-to-be-Done. For example, if the job is about a front lawn, structure the statement like “Keep the front lawn appearing lush,” or “Keep the front lawn appearing green.”
+
+  * Only include statements that make sense. For example, if the job is about an automobile, do not state that “Ensure my automobile is easy to install” because owners do not install automobiles. However, you might say “Ensure the automobile’s electronics are easy to setup for use.”
+
+  * The collection of statements should be MECE. Because the number I ask for could be different, take this into account as you ensure that you have complete coverage of concepts. Therefore, some outputs may have more highly themed statements (i.e., fewer statements) and some may be more granular (i.e., more statements).
+
+  * Output as an numbered list
+
+  * Explain each statement
+
+  * Output statement in bold followed by a dash and then a one sentence explanation in italics, but not bold
+
+  * Only output the list, do not included any other sentences or paragraphs.
+
+  * Always output in markdown
+
+  Example Format:
+
+  * Know the exact location of the part at all times - Being aware of the part's location helps in real-time decision-making for delivery.
+
+  Please provide a list of {n} standalone statements describing your preferences when {job}{context}.
+
+  End User: {end_user}
+  Job: {job}
+  Context: {context}
+  n: {n}
+  temp: {temp}
+
+parameters:
+  temp:
+    description: The temperature setting for the language model, controlling the randomness of its output.
+    type: float
+    required: false
+    default: 0.1  # Default value for temperature; adjust as needed
+  
+  end_user:
+    description: The role or title of the end user performing the job.
+    type: string
+    required: true
+  
+  job:
+    description: The specific job or task being analyzed or discussed.
+    type: string
+    required: true
+  
+  context:
+    description: Additional context or circumstances related to the job.
+    type: string
+    required: false  # If context is not always required
+    default: ""  # Empty default value if no context is provided
+  
+  n:
+    description: The number of items or contexts to generate.
+    type: integer
+    required: false
+    default: 5  # Default value for the number of items to generate

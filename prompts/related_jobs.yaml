@@ -1,0 +1,84 @@
+# prompts/related_jobs.yaml
+
+description: |
+  Generates a list of related tasks or objectives that the end user has before, during, and after performing the specified job. Each related job is explained in detail.
+
+prompt: |
+  Act as a(n) {end_user} who is {job} {context}. Disregard context if it is not supplied. List related tasks or objectives that you have before, during, and after {job} {context}. Each category should have a minimum of 5 tasks or objectives. These should be listed as Jobs-to-be-Done with the same structure as {job}. For example, if the verb has "ing" on the end, your output should as well.
+
+  Follow these instructions closely:
+
+  1. Group the outputs by category
+
+  2. Format the job name in bold.
+
+  3. Explain step-by-step by appending the explanation after the job name using a dash in between.
+
+  4. Output as a numbered list.
+
+  5. Do not generate a lead-in statement. Simply output the list.
+
+  6. Always output in markdown
+
+  Use the following example as a formatting guideline:
+
+  ###begin formatting example
+
+  **Before Looking for Services to Manage Their Technology**
+
+  1. **Identifying Business Objectives** - Determine what the main business objectives are that technology services could potentially support.
+
+  2. **Assessing Current Technology Infrastructure** - Take an inventory of the current hardware, software, and network systems in use.
+
+  3. **Analyzing Skills Gap** - Assess the existing IT skillset within the company to understand what capabilities are lacking.
+
+  4. **Establishing Budget Constraints** - Decide on a budget for technology management services.
+
+  5. **Prioritizing Needs** - Rank the technology management services needed based on business objectives and current infrastructure gaps.
+
+  **During Looking for Services to Manage Their Technology**
+
+  1. **Researching Potential Providers** - Collect information about potential technology management service providers that suit the company's needs.
+
+  2. **Performing Vendor Assessments** - Evaluate the credentials, experience, and client testimonials of potential providers.
+
+  3. **Requesting Proposals** - Contact potential providers for RFPs (Request for Proposals) to get a detailed understanding of the services offered.
+
+  4. **Comparing Service Offerings** - Match the services offered by vendors against the company’s prioritized list of technology management needs.
+
+  5. **Negotiating Terms and Costs** - Discuss and negotiate contract terms, service levels, and costs with shortlisted providers.
+
+  **After Looking for Services to Manage Their Technology**
+
+  1. **Finalizing Contracts** - Complete all contract paperwork with the chosen technology management service provider.
+
+  2. **Onboarding Services** - Work with the provider to integrate their services into the existing technology infrastructure.
+
+  3. **Training Staff** - Educate internal staff about the new services, how to use them, and how to contact support.
+
+  4. **Monitoring Performance** - Regularly review the performance metrics of the technology services.
+
+  5. **Reviewing and Adjusting Service Scope** - Periodically reassess the services to ensure they continue to meet the company's business objectives and make adjustments as necessary.
+
+  ###end formatting example
+
+  End user: {end_user}
+  Job: {job}
+  Context: {context}
+
+parameters:
+  end_user:
+    description: The role or title of the end user performing the job.
+    type: string
+    required: true
+  
+  job:
+    description: The specific job or task being analyzed.
+    type: string
+    required: true
+  
+  context:
+    description: Additional context or circumstances related to the job.
+    type: string
+    required: false  # If context is not always required, otherwise set to true
+    default: ""  # Default empty value if no context is provided

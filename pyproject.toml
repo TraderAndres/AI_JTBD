@@ -12,6 +12,7 @@ openai = "^1.50.2"
 streamlit = "^1.38.0"
 pandas = "^2.2.3"
 streamlit-aggrid = "^1.0.5"
+pyyaml = "^6.0.2"
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md

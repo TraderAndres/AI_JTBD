@@ -6,6 +6,7 @@ channel = "stable-24_05"
 
 [unitTest]
 language = "python3"
+# run = "pytest"
 
 [gitHubImport]
 requiredFiles = [".replit", "replit.nix"]
