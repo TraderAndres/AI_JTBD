@@ -5,6 +5,7 @@ import logging
 import os
 import streamlit as st
 from anytree import PreOrderIter, Node
+import inspect
 
 
 from downstream_processor import DownstreamProcessor

@@ -33,45 +33,45 @@ class TestDisplayJobSelection(unittest.TestCase):
         mock_st.multiselect.assert_not_called()
         mock_st.button.assert_not_called()
 
-    # @patch('app.st')
-    # def test_display_job_selection_with_jobs_no_selection(self, mock_st):
-    #     """
-    #     Test display_job_selection with available jobs but no selection made.
-    #     """
-    #     # Create sample job nodes
-    #     job1 = Node("Job1", parent=None, description="Description1", processed=False)
-    #     job2 = Node("Job2", parent=None, description="Description2", processed=False)
+    @patch('app.st')
+    def test_display_job_selection_with_jobs_no_selection(self, mock_st):
+        """
+        Test display_job_selection with available jobs but no selection made.
+        """
+        # Create sample job nodes
+        job1 = Node("Job1", parent=None, description="Description1", processed=False)
+        job2 = Node("Job2", parent=None, description="Description2", processed=False)
 
-    #     # Mock hierarchy_builder with job_nodes
-    #     mock_hierarchy_builder = MagicMock()
-    #     mock_hierarchy_builder.job_nodes = [job1, job2]
-    #     mock_hierarchy_builder.industry = "Finance"
-    #     mock_hierarchy_builder.fidelity = "high"
-    #     mock_hierarchy_builder.root = Node("High Level Job")
+        # Mock hierarchy_builder with job_nodes
+        mock_hierarchy_builder = MagicMock()
+        mock_hierarchy_builder.job_nodes = [job1, job2]
+        mock_hierarchy_builder.industry = "Finance"
+        mock_hierarchy_builder.fidelity = "high"
+        mock_hierarchy_builder.root = Node("High Level Job")
 
-    #     # Create job paths directly as real data instead of using mock objects
-    #     job_paths = ["/High Level Job/Job1", "/High Level Job/Job2"]
+        # Create job paths directly as real data instead of using mock objects
+        job_paths = ["/High Level Job/Job1", "/High Level Job/Job2"]
 
-    #     # Mock downstream_processor and visualizer
-    #     mock_downstream_processor = MagicMock()
-    #     mock_visualizer = MagicMock()
+        # Mock downstream_processor and visualizer
+        mock_downstream_processor = MagicMock()
+        mock_visualizer = MagicMock()
 
-    #     # Configure Streamlit mocks
-    #     mock_st.text_input.return_value = ""
-    #     mock_st.multiselect.return_value = []
-    #     mock_st.button.return_value = False  # Simulate button not clicked
+        # Configure Streamlit mocks
+        mock_st.text_input.return_value = ""
+        mock_st.multiselect.return_value = []
+        mock_st.button.return_value = False  # Simulate button not clicked
 
-    #     # Call the function with real job paths instead of mock objects
-    #     display_job_selection(mock_hierarchy_builder, mock_downstream_processor, mock_visualizer)
+        # Call the function with real job paths instead of mock objects
+        display_job_selection(mock_hierarchy_builder, mock_downstream_processor, mock_visualizer)
 
-    #     # Assert that Streamlit components are called correctly
-    #     mock_st.header.assert_called_with("Select Jobs for Further Processing")
-    #     mock_st.text_input.assert_called_with("Search Jobs")
-    #     mock_st.multiselect.assert_called()
-    #     mock_st.button.assert_called_with("Process Selected Jobs")
+        # Assert that Streamlit components are called correctly
+        mock_st.header.assert_called_with("Select Jobs for Further Processing")
+        mock_st.text_input.assert_called_with("Search Jobs")
+        mock_st.multiselect.assert_called()
+        mock_st.button.assert_called_with("Process Selected Jobs")
 
-    #     # Ensure process_job is not called since no jobs are selected
-    #     mock_downstream_processor.process_job.assert_not_called()
+        # Ensure process_job is not called since no jobs are selected
+        mock_downstream_processor.process_job.assert_not_called()
 
 
     # @patch('app.st')
