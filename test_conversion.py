@@ -2,8 +2,8 @@
 from utils import save_hierarchy_to_markdown
 
 def test_conversion():
-    json_input = "Finance_hierarchy.json"
-    text_output = "Finance_hierarchy_output.md"
+    json_input = "hierarchy.json"
+    text_output = "TEST_hierarchy_output.md"
     save_hierarchy_to_markdown(json_input, text_output)
     print(f"Hierarchical text saved to '{text_output}'.")
 

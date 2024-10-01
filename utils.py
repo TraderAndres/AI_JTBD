@@ -24,6 +24,15 @@ def save_hierarchy_to_file(root, filename):
         json.dump(hierarchy_dict, f, indent=4)
 
 
+def update_hierarchy_in_file(root, filename):
+    """
+    Updates the hierarchy JSON file incrementally based on the root node's current state.
+    """
+    hierarchy_dict = node_to_dict(root)
+    with open(filename, 'w') as f:
+        json.dump(hierarchy_dict, f, indent=4)
+
+
 def dict_to_tree(node_dict, parent=None):
     """
     Recursively converts a dictionary to an AnyTree Node.

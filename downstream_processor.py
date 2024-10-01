@@ -1,10 +1,12 @@
 # downstream_processor.py
 import logging
 
-from prompt_builder import PromptBuilder
-from llm_interface import LLMInterface
 import streamlit as st
 from anytree import Node
+
+from prompt_builder import PromptBuilder
+from llm_interface import LLMInterface
+from utils import update_hierarchy_in_file
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -33,6 +35,10 @@ class DownstreamProcessor:
         """
         General method to process any downstream step.
         """
+        if node.processed:
+            logging.info(f"Node {node.name} already processed for step {step}. Skipping.")
+            return
+            
         logging.debug(f"Processing step: {step} for node: {node.name}")
 
         # Determine prompt name based on step
@@ -183,8 +189,10 @@ class DownstreamProcessor:
             logging.exception(f"Error adding child nodes for step '{step}': {e}")
             return
 
-        # Mark the node as processed
+        # After successful processing, mark as processed
         node.processed = True
+        # # Update JSON file or database with the new state
+        # update_hierarchy_in_file(root_node, "current_hierarchy.json")
 
     def process_job_contexts(self, node, n, fidelity, temp=0.1):
         logging.debug(f"Adding 'Job Contexts' under '{node.name}'")

@@ -87,14 +87,25 @@ def load_existing_hierarchy(hierarchy_builder, downstream_processor, visualizer)
                 st.error(f"Error loading hierarchy: {e}")
 
 def json_to_anytree(data, parent=None):
-    node = Node(
-        data['name'],
-        parent=parent,
-        description=data.get('description', ''),
-        processed=data.get('processed', False)
-    )
+    # Check if data is None or empty
+    if not data:
+        return None
+
+    try:
+        # Create a new node if data is valid
+        node = Node(
+            data['name'],
+            parent=parent,
+            description=data.get('description', ''),
+            processed=data.get('processed', False)
+        )
+    except KeyError as e:
+        st.error(f"Missing key in data: {e}. Data: {data}")
+        return None  # Return None if the node cannot be created
+
     for child in data.get('children', []):
         json_to_anytree(child, parent=node)
+
     return node
 
 def get_job_nodes(root):
@@ -280,8 +291,13 @@ def process_job(job_node, downstream_processor, hierarchy_builder, visualizer):
                 initial_children_count = len(current_node.children)
                 # Log the processing step
                 logging.debug(f"Processing step '{step_name}' under '{current_node.name}'")
-                # Call the processing method
-                processing_method(current_node, n, fidelity, temp)
+                # Pass only the required arguments
+                if method_name == "process_job_map":
+                    # process_job_map requires only (node, fidelity, temp)
+                    processing_method(current_node, fidelity, temp)
+                else:
+                    # Default case: Pass (node, n, fidelity, temp) if method expects those arguments
+                    processing_method(current_node, n, fidelity, temp)
                 # Get the new child added (assumes one child per step)
                 if len(current_node.children) > initial_children_count:
                     new_child = current_node.children[-1]
@@ -310,6 +326,22 @@ def process_job(job_node, downstream_processor, hierarchy_builder, visualizer):
     # Optionally, update the hierarchy visualization
     visualizer.display_hierarchy(hierarchy_builder.root)
 
+
+def handle_user_selection(downstream_processor, root_node, visualizer):
+    # Display current hierarchy
+    visualizer.display_hierarchy(root_node)
+
+    # Display selection options for further expansion
+    st.header("Select Nodes for Expansion")
+    unprocessed_nodes = [node for node in PreOrderIter(root_node) if not node.processed]
+    options = [node.name for node in unprocessed_nodes]
+
+    selected_option = st.selectbox("Choose a node to expand further", options)
+    if selected_option:
+        # Find and process the selected node
+        selected_node = next(node for node in PreOrderIter(root_node) if node.name == selected_option)
+        process_job(selected_node, downstream_processor, root_node, visualizer)
+        
 
 def main_app():
     main()
