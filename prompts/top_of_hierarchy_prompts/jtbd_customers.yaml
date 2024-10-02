@@ -1,0 +1,107 @@
+# prompts/top_of_hierarchy_prompts/jtbd_customers.yaml
+
+description: |
+  This prompt generates a list of Jobs-to-be-Done that an end user might aim to accomplish using solutions offered by a specific industry, sector, and subsector. Each job is framed from the perspective of the customer's desired outcomes rather than the company offering the solution. The job statements should begin with a verb ending in "ing" and describe what the end user is ultimately trying to achieve within their role.
+
+prompt: |
+  Act as a(n) {end_user} who works in the {industry} industry with a specialty focus in the {sector} sector and {subsector} subsector. I do not want to know what {end_user}s are doing with solutions offered by the industry, sector, and/or subsector. I want to know what they could be ultimately trying to accomplish by using the solutions offered by the industry | sector | subsector given their role as a(n) {end_user}. What they are trying to accomplish should be aligned with their desired outcomes, not the outcomes of the company offering the solution.
+
+  If the industry is Cloud Computing Services, the sector is Software as a Service (SaaS), and the subsector is Customer Relationship Management (CRM) Software, I don’t want to know that a Marketing Manager “launches marketing campaigns.” I want to know that they are “developing qualified leads.”
+
+  We're going to call what they are trying to accomplish "Jobs-to-be-Done."
+
+  I'd like you to generate a list of {n} jobs that the {end_user} is trying to get done.
+
+  These should be tightly tied to the solutions offered by the industry and/or sector and/or subsector. I don’t want to know about one-offs, or ad-hoc jobs.
+
+  A job statement should begin with a verb ending in "ing" (the gerund form of a verb).
+
+  Do not use general terms that do not have a discrete, tangible output at the beginning of the job statement. An example of such a verb that should never be used is "Managing."
+
+  The following is a non-exhaustive list of common verbs that might be used at the beginning of each functional job. Allocate 80% of the output to these:
+
+  1. Achieving
+  2. Allowing
+  3. Confirming
+  4. Coordinating
+  5. Correcting
+  6. Creating
+  7. Demonstrating
+  8. Detecting
+  9. Determining
+  10. Developing
+  11. Discovering
+  12. Ensuring
+  13. Experiencing
+  14. Finding
+  15. Fixing
+  16. Getting
+  17. Helping
+  18. Identifying
+  19. Improving
+  20. Keeping
+  21. Learning
+  22. Locating
+  23. Maintaining
+  24. Making
+  25. Obtaining
+  26. Planning
+  27. Preparing
+  28. Preventing
+  29. Protecting
+  30. Providing
+  31. Relieving
+  32. Remembering
+  33. Removing
+  34. Sharing
+  35. Staying
+  36. Stopping
+  37. Teaching
+  38. Understanding
+  39. Updating
+  40. Verifying
+
+  Output as a numbered list.
+  Output the job name in bold.
+  Explain each job step-by-step after a hyphen.
+  Do not generate a sentence before the list.
+  Do not generate anything after the list.
+
+  Example Format:
+  1. **Searing Meat** - The ability to create a caramelized crust on the exterior of a meat cut by applying high heat quickly. This process enhances the flavor and appearance of the meat, making it more appetizing and palatable.
+
+  Do theme-up customer jobs if “n” is small, and break them down when “n” is larger.
+  Always output in markdown.
+
+parameters:
+  end_user:
+    description: The role or title of the end user using the industry solutions in the specified context.
+    type: string
+    required: true
+
+  industry:
+    description: The name of the industry for which to generate Jobs-to-be-Done.
+    type: string
+    required: true
+
+  sector:
+    description: The sector within the specified industry for which to generate Jobs-to-be-Done.
+    type: string
+    required: true
+
+  subsector:
+    description: The subsector within the specified sector for which to generate Jobs-to-be-Done.
+    type: string
+    required: true
+
+  n:
+    description: The number of jobs to list (e.g., a small number for a summarized view or a larger number for a comprehensive view).
+    type: integer
+    required: true
+    default: 10
+
+  fidelity:
+    description: The level of detail required (e.g., narrow | broad | comprehensive).
+    type: string
+    required: true
+    default: comprehensive

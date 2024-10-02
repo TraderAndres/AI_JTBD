@@ -1,0 +1,42 @@
+# prompts/top_of_hierarchy_prompts/end_users_provider.yaml
+
+description: |
+  This prompt generates a list of roles that support the work or services within a specified industry, sector, and subsector. The roles are listed with brief descriptions based on the provided parameters for industry, sector, subsector, fidelity, and number of roles (`n`).
+
+prompt: |
+  Act as an expert in industry classification. Within the {industry} industry, and then within the {sector} sector, and then within the {subsector} subsector, create a {fidelity} list of {n} related roles that support the work (or service) and include a brief description. For example, within the **Agriculture, Forestry, Fishing, and Hunting industry**, and then within the **Animal Production and Aquaculture** sector, and then within the **Dairy Cattle and Milk Production** subsector the role might be **Dairy Farmer.** The structure of your response should be as follows:
+
+  1. **Role**: This is where you describe the role.
+
+  Do not output anything before, or after the list.
+
+  Do theme-up customer types if “n” is small, and break them down when “n” is larger.
+  Always output in markdown.
+
+parameters:
+  industry:
+    description: The name of the industry for which to list roles.
+    type: string
+    required: true
+
+  sector:
+    description: The sector within the specified industry for which to list related roles.
+    type: string
+    required: true
+
+  subsector:
+    description: The subsector within the specified sector for which to list related roles.
+    type: string
+    required: true
+
+  n:
+    description: The number of roles to list (e.g., a small number for a summarized view or a larger number for detailed breakdown).
+    type: integer
+    required: true
+    default: 10
+
+  fidelity:
+    description: The level of detail required (e.g., narrow | broad | comprehensive).
+    type: string
+    required: true
+    default: comprehensive

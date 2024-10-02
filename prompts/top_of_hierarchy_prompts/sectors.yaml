@@ -1,0 +1,24 @@
+# prompts/top_of_hierarchy_prompts/sectors.yaml
+
+description: |
+  This prompt generates a list of sectors within a given industry. The sectors are categorized based on the provided industry and level of detail specified by the fidelity parameter.
+
+prompt: |
+  Act as an expert in industry classification. Within the {industry} industry, create a {fidelity} list of all the related sectors and include a brief description. For example, within the **Agriculture, Forestry, Fishing, and Hunting industry**, one such sector might be **Animal Production and Aquaculture**. The structure of your response should be as follows:
+
+  1. **Animal Production and Aquaculture**: This covers livestock farming, dairy production, poultry and egg production, and aquaculture.
+
+  Do not output anything before, or after the list. 
+  Always output in markdown.
+
+parameters:
+  industry:
+    description: The name of the industry for which to list sectors.
+    type: string
+    required: true
+
+  fidelity:
+    description: The level of detail required (e.g., narrow | broad | comprehensive).
+    type: string
+    required: true
+    default: comprehensive  # Default value is set to comprehensive unless specified otherwise

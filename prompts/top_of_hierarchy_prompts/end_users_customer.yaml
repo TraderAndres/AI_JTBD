@@ -1,0 +1,42 @@
+# prompts/top_of_hierarchy_prompts/end_users_customer.yaml
+
+description: |
+  This prompt generates a list of end user roles (individuals who purchase sector products and services) that benefit from related solutions within a specified industry, sector, and subsector. The roles are listed with brief descriptions based on the provided parameters for industry, sector, subsector, fidelity, and number of roles (`n`).
+
+prompt: |
+  Act as an expert in industry classification. Within the {industry} industry, and then within the {sector} sector, and then within the {subsector} subsector, create a {fidelity} list of {n} related end user (people who purchase sector products and services) roles that benefit from related solutions and include a brief description. For example, within the **Cloud Computing Services industry**, and then within the **Software as a Service (SaaS)** sector, and then within the **Customer Relationship Management (CRM) Software** subsector, the role might be **Marketing Analyst**. In the **Plumbing, Heating, and Air-Conditioning** sector, the role might be a home owner. The structure of your response should be as follows:
+
+  1. **Role**: This is where you describe the role.
+
+  Do not output anything before, or after the list.
+
+  Do theme-up customer types if “n” is small, and break them down when “n” is larger.
+  Always output in markdown.
+
+parameters:
+  industry:
+    description: The name of the industry for which to list end user roles.
+    type: string
+    required: true
+
+  sector:
+    description: The sector within the specified industry for which to list related end user roles.
+    type: string
+    required: true
+
+  subsector:
+    description: The subsector within the specified sector for which to list related end user roles.
+    type: string
+    required: true
+
+  n:
+    description: The number of end user roles to list (e.g., a small number for a summarized view or a larger number for detailed breakdown).
+    type: integer
+    required: true
+    default: 10
+
+  fidelity:
+    description: The level of detail required (e.g., narrow | broad | comprehensive).
+    type: string
+    required: true
+    default: comprehensive

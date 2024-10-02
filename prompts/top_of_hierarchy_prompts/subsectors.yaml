@@ -1,0 +1,29 @@
+# prompts/top_of_hierarchy_prompts/subsectors.yaml
+
+description: |
+  This prompt generates a list of subsectors or types of products produced within a specified industry and sector. The subsectors are listed with a brief description based on the provided industry, sector, and level of detail specified by the fidelity parameter.
+
+prompt: |
+  Act as an expert in industry classification. Within the {industry} industry, and then within the {sector} sector, create a {fidelity} list of related subsectors (or all types of products the sector produces) and include a brief description. For example, within the **Agriculture, Forestry, Fishing, and Hunting industry**, and then within the **Animal Production and Aquaculture** sector, one such subsector might be **Dairy Cattle and Milk Production**. The structure of your response should be as follows:
+
+  1. **Dairy Cattle and Milk Production**: This involves raising cattle for milk and dairy products.
+
+  Do not output anything before, or after the list.
+  Always output in markdown.
+
+parameters:
+  industry:
+    description: The name of the industry for which to list subsectors.
+    type: string
+    required: true
+
+  sector:
+    description: The sector within the specified industry for which to list related subsectors or product types.
+    type: string
+    required: true
+
+  fidelity:
+    description: The level of detail required (e.g., narrow | broad | comprehensive).
+    type: string
+    required: true
+    default: comprehensive
