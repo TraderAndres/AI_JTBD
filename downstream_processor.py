@@ -35,24 +35,36 @@ class DownstreamProcessor:
         """
         General method to process any downstream step.
         """
+        # Check if node is already processed; log additional context on skipping behavior
         if node.processed:
-            logging.info(f"Node {node.name} already processed for step {step}. Skipping.")
+            if len(node.children) > 0:
+                logging.info(f"Node '{node.name}' has already been processed and has children. Skipping redundant processing for step '{step}'.")
+            else:
+                logging.warning(f"Node '{node.name}' is marked as processed but has no children. Consider re-processing step '{step}' for completeness.")
             return
             
         logging.debug(f"Processing step: {step} for node: {node.name}")
 
         # Determine prompt name based on step
-        prompt_name = step.lower().replace(" ", "_")
-        if not prompt_name:
+        # Replace special characters like parentheses to ensure consistency
+        prompt_name = step.lower().replace(" ", "_").replace("(", "").replace(")", "")
+        if prompt_name not in self.step_to_prompt.values():
             logging.error(f"No prompt mapping found for step '{step}'.")
             st.error(f"No prompt mapping found for step '{step}'.")
             return
         prompt_method = f'build_{prompt_name}_prompt'
         parse_method = f'parse_{prompt_name}'
 
-        logging.debug(f"Prompt Name: {prompt_name}")
-        logging.debug(f"Prompt Method: {prompt_method}")
-        logging.debug(f"Parse Method: {parse_method}")
+        # Existing logging statements to confirm prompt and parse method names
+        logging.debug(f"Generated prompt method: {prompt_method}")
+        logging.debug(f"Generated parse method: {parse_method}")
+
+        # Additional logging to verify existence before accessing attributes
+        if not hasattr(self.prompt_builder, prompt_method):
+            logging.error(f"Prompt method '{prompt_method}' not found in PromptBuilder. Available methods: {dir(self.prompt_builder)}")
+        if not hasattr(self.prompt_builder, parse_method):
+            logging.error(f"Parse method '{parse_method}' not found in PromptBuilder. Available methods: {dir(self.prompt_builder)}")
+
 
         # Check if methods exist
         if not hasattr(self.prompt_builder, prompt_method):
@@ -131,18 +143,21 @@ class DownstreamProcessor:
         elif prompt_name == 'potential_root_causes_preventing_the_ideal_state':
             # Find the 'Ideal Job State' node among the children
             ideal_job_state_node = next(
-                (child for child in node.children
-                 if child.name.lower() == 'ideal_job_state'), None)
-            ideal_job_state_name = ideal_job_state_node.name if ideal_job_state_node else 'Ideal Job State'
-
+                (child for child in node.children if child.name.lower() == 'ideal_job_state'), None
+            )
+            if not ideal_job_state_node:
+                logging.warning(f"'Ideal Job State' node not found under '{node.name}'. Skipping step '{step}'.")
+                return
+    
+            ideal_job_state_name = ideal_job_state_node.name
             prompt = getattr(self.prompt_builder, prompt_method)(
                 end_user=node.parent.parent.name,
                 job=node.name,
                 context=node.description,
-                ideal=
-                ideal_job_state_name,  # Correctly reference 'Ideal Job State'
+                ideal=ideal_job_state_name,  # Correctly reference 'Ideal Job State'
                 n=n,
-                temp=temp)
+                temp=temp
+            )
         else:
             # Handle other prompts accordingly
             prompt_kwargs = {
@@ -156,6 +171,25 @@ class DownstreamProcessor:
                 prompt_kwargs['temp'] = temp
             prompt = getattr(self.prompt_builder,
                              prompt_method)(**prompt_kwargs)
+        # # Consolidate prompt building using a dictionary for parameter flexibility
+        # prompt_kwargs = {
+        #     'end_user': node.parent.parent.name,
+        #     'job': node.name,
+        #     'context': node.description,
+        #     'n': n,  # Default n value
+        #     'temp': temp  # Default temp value
+        # }
+
+        # # Adjust prompt_kwargs for specific prompt requirements
+        # if prompt_name == 'job_map':
+        #     prompt_kwargs['fidelity'] = fidelity
+        # elif prompt_name == 'financial_metrics_of_purchasing_decision_makers':
+        #     prompt_kwargs.pop('temp')  # Remove temp if not needed for this prompt
+
+        # # Use prompt_kwargs to build the prompt
+        # prompt = getattr(self.prompt_builder, prompt_method)(**prompt_kwargs)
+
+        
 
         # Get response from LLM
         try:
@@ -189,10 +223,15 @@ class DownstreamProcessor:
             logging.exception(f"Error adding child nodes for step '{step}': {e}")
             return
 
-        # After successful processing, mark as processed
-        node.processed = True
-        # # Update JSON file or database with the new state
-        # update_hierarchy_in_file(root_node, "current_hierarchy.json")
+        # After successful processing, mark node as processed only if it has children
+        if len(node.children) > 0:
+            node.processed = True
+            logging.debug(f"Marked node '{node.name}' as processed.")
+            
+        # # After successful processing, mark as processed
+        # node.processed = True
+        # # # Update JSON file or database with the new state
+        # # update_hierarchy_in_file(root_node, "current_hierarchy.json")
 
     def process_job_contexts(self, node, n, fidelity, temp=0.1):
         logging.debug(f"Adding 'Job Contexts' under '{node.name}'")

@@ -7,6 +7,7 @@ from hierarchy_builder import HierarchyBuilder
 from llm_interface import LLMInterface
 from prompt_builder import PromptBuilder
 from utils import save_hierarchy_to_file, dict_to_tree
+from method_mapping import STEP_NAME_TO_METHOD  # Import the mapping
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -112,8 +113,14 @@ def process_steps(current_node, steps_list, downstream_processor):
     for step in steps_list:
         step_name = step['step']
         n = step['n']
-        # Construct the method name dynamically
-        method_name = f"process_{step_name.lower().replace(' ', '_').replace('(', '').replace(')', '')}"
+        # Check if the step_name has a direct mapping to a method name
+        if step_name in STEP_NAME_TO_METHOD:
+            method_name = STEP_NAME_TO_METHOD[step_name]
+        else:
+            # Construct the method name dynamically if no direct mapping is found
+            method_name = f"process_{step_name.lower().replace(' ', '_').replace('(', '').replace(')', '')}"
+
+
 
         # Get the processing method from downstream_processor
         processing_method = getattr(downstream_processor, method_name, None)
@@ -123,16 +130,15 @@ def process_steps(current_node, steps_list, downstream_processor):
 
             # Log the processing step
             logging.debug(f"Processing step '{step_name}' under '{current_node.name}'")
-
             logging.debug(f"Attempting to call method: {method_name}")
+
             # Explicitly pass arguments as named parameters
             if method_name == "process_job_map":
                 # Explicitly specify fidelity and temp for process_job_map
-                processing_method(node=current_node, fidelity="comprehensive", temp=0.1)
+                processing_method(node=current_node, fidelity="med", temp=0.1)
             else:
                 # Explicitly specify all arguments for other methods
                 processing_method(node=current_node, n=n, fidelity="comprehensive", temp=0.1)
-
 
             # Get the new child node(s) added (assuming one child per step for simplicity)
             new_child = None
@@ -150,10 +156,9 @@ def process_steps(current_node, steps_list, downstream_processor):
         if 'children_steps' in step and new_child:
             process_steps(new_child, step['children_steps'], downstream_processor)
 
-        # After processing, mark the node as processed to prevent reprocessing
-        if new_child:
-            new_child.processed = True
-            logging.debug(f"Marked '{new_child.name}' as processed.")
+    # Mark the node as processed **only after completing all steps**
+    current_node.processed = True
+    logging.debug(f"Marked '{current_node.name}' as processed.")
 
 
 # Process a selected node using the downstream processor

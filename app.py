@@ -44,7 +44,7 @@ def generate_new_hierarchy(hierarchy_builder, downstream_processor, visualizer):
     st.header("Generate a New Hierarchy")
 
     industry = st.text_input("Enter the Industry", value="Finance")
-    fidelity = st.selectbox("Select Fidelity", ["low", "med", "high", "short list of 3"])
+    fidelity = st.selectbox("Select Fidelity", ["narrow", "broad", "comprehensive", "short list of 3"])
     n_end_users = st.number_input("Number of End Users per Category", min_value=1, max_value=10, value=2)
     n_jobs = st.number_input("Number of Jobs per End User", min_value=1, max_value=20, value=2)
 

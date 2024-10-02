@@ -28,13 +28,23 @@ class TestConsoleApp(unittest.TestCase):
         def mock_process_job_map(node, fidelity, temp):
             Node("Desired Outcomes", parent=node, description="Mock Desired Outcomes node", processed=False)
 
-        def mock_process_desired_outcomes_success_metrics(node, n, fidelity, temp):
-            Node("Themed Desired Outcomes", parent=node, description="Mock Themed Desired Outcomes node", processed=False)
+        def mock_process_desired_outcomes(node, n, fidelity, temp):
+            # "Themed Desired Outcomes" should not be under "Desired Outcomes" but should be a sibling in the context of "Job Map".
+            # This means we add it under "Job Map" (node.parent) instead of "Desired Outcomes"
+            Node("Themed Desired Outcomes", parent=node.parent, description="Mock Themed Desired Outcomes node", processed=False)
+
+        def mock_process_themed_desired_outcomes(node, n, fidelity, temp):
+            # This should remain consistent and ensure that "Situational Complexity Factors" is added under "Job Map"
+            Node("Situational Complexity Factors", parent=node.parent, description="Mock Situational Factors node", processed=False)
+
 
         # Assign side effects to each mock method
         self.mock_downstream_processor.process_job_contexts.side_effect = mock_process_job_contexts
         self.mock_downstream_processor.process_job_map.side_effect = mock_process_job_map
-        self.mock_downstream_processor.process_desired_outcomes_success_metrics.side_effect = mock_process_desired_outcomes_success_metrics
+        self.mock_downstream_processor.process_desired_outcomes.side_effect = mock_process_desired_outcomes
+        self.mock_downstream_processor.process_themed_desired_outcomes.side_effect = mock_process_themed_desired_outcomes
+
+
         # Correct mock names
         # self.mock_downstream_processor.process_themed_desired_outcomes_themed_success_metrics.side_effect = mock_process_themed_desired_outcomes
         # self.mock_downstream_processor.process_situational_complexity_factors.side_effect = mock_process_situational_complexity_factors
@@ -86,8 +96,38 @@ class TestConsoleApp(unittest.TestCase):
 
         # Verify that process_job_map was called for the "Job Map" node
         self.mock_downstream_processor.process_job_map.assert_called_once_with(
-            node=job_map_node, fidelity="comprehensive", temp=0.1
+            node=job_map_node, fidelity="med", temp=0.1
         )
+
+        # Verify that process_desired_outcomes was called with the "Desired Outcomes" node
+        desired_outcomes_node = job_map_node.children[-1]
+        self.mock_downstream_processor.process_desired_outcomes.assert_called_once_with(
+            node=desired_outcomes_node, n=20, fidelity="comprehensive", temp=0.1
+        )
+
+        # Verify that process_themed_desired_outcomes was called with the "Themed Desired Outcomes" node
+        themed_outcomes_node = desired_outcomes_node.children[-1]
+        self.assertEqual(themed_outcomes_node.name, "Themed Desired Outcomes")
+        self.mock_downstream_processor.process_themed_desired_outcomes.assert_called_once_with(
+            node=themed_outcomes_node, n=10, fidelity="comprehensive", temp=0.1
+        )
+
+        # Verify that "Desired Outcomes" is correctly under "Job Map"
+        job_map_node = self.mock_leaf_node.children[-1]
+        desired_outcomes_node = job_map_node.children[-1]
+        self.assertEqual(desired_outcomes_node.name, "Desired Outcomes")
+    
+        # Verify that "Themed Desired Outcomes" is a sibling of "Desired Outcomes" under "Job Map"
+        themed_outcomes_node = job_map_node.children[-2]  # Assuming "Themed Desired Outcomes" is created before "Desired Outcomes"
+        self.assertEqual(themed_outcomes_node.name, "Themed Desired Outcomes")
+        self.assertEqual(themed_outcomes_node.parent, job_map_node)
+        self.assertEqual(desired_outcomes_node.parent, job_map_node)
+    
+        # Verify that "Situational Complexity Factors" is a sibling of "Job Map"'s children and correctly placed
+        situational_factors_node = job_map_node.children[-1]  # Assuming "Situational Complexity Factors" is created after "Themed Desired Outcomes"
+        self.assertEqual(situational_factors_node.name, "Situational Complexity Factors")
+        self.assertEqual(situational_factors_node.parent, job_map_node)
+
 
 
     def test_process_steps(self):
@@ -127,27 +167,28 @@ class TestConsoleApp(unittest.TestCase):
         # Call process_steps with the mock leaf node and steps
         process_steps(self.mock_leaf_node, steps, self.mock_downstream_processor)
 
-        # Verify that process_job_contexts was called once
+        # Verify that all processing methods were called for each step
         self.mock_downstream_processor.process_job_contexts.assert_called_once_with(
             node=self.mock_leaf_node, n=10, fidelity="comprehensive", temp=0.1
         )
 
-        # Check that the first child was added correctly under "Providing Financial Solutions"
+        # Check that each subsequent child was added correctly and processed
         job_map_node = self.mock_leaf_node.children[-1]
         self.assertEqual(job_map_node.name, "Job Map")
-
-        # Verify that process_job_map was called with the new child node
         self.mock_downstream_processor.process_job_map.assert_called_once_with(
-            node=job_map_node, fidelity="comprehensive", temp=0.1
+            node=job_map_node, fidelity="med", temp=0.1
         )
 
-        # Track the new child node created under "Job Map"
         desired_outcomes_node = job_map_node.children[-1]
         self.assertEqual(desired_outcomes_node.name, "Desired Outcomes")
-
-        # Verify that process_desired_outcomes_success_metrics was called with "Desired Outcomes" node
-        self.mock_downstream_processor.process_desired_outcomes_success_metrics.assert_called_once_with(
+        self.mock_downstream_processor.process_desired_outcomes.assert_called_once_with(
             node=desired_outcomes_node, n=20, fidelity="comprehensive", temp=0.1
+        )
+
+        themed_outcomes_node = desired_outcomes_node.children[-1]
+        self.assertEqual(themed_outcomes_node.name, "Themed Desired Outcomes")
+        self.mock_downstream_processor.process_themed_desired_outcomes.assert_called_once_with(
+            node=themed_outcomes_node, n=10, fidelity="comprehensive", temp=0.1
         )
 
 
