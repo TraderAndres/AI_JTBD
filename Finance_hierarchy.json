@@ -1,0 +1,40 @@
+{
+    "name": "Finance",
+    "description": "Root node for industry hierarchy",
+    "processed": false,
+    "children": [
+        {
+            "name": "Banking and Financial Services",
+            "description": "This sector includes commercial banks, investment banks, credit unions, and mortgage lenders that provide a range of financial products and services, such as loans, deposits, and investment advice.",
+            "processed": false,
+            "children": [
+                {
+                    "name": "Retail Banking",
+                    "description": "This involves providing financial services directly to consumers, including savings and checking accounts, personal loans, mortgages, and credit cards.",
+                    "processed": false,
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "processed": false,
+                            "children": []
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "processed": false,
+                            "children": [
+                                {
+                                    "name": "Retail Banking Customer",
+                                    "description": "This role includes individuals who use banking services for personal finances, such as checking and savings accounts, loans, and credit cards. They seek convenience, accessibility, and competitive rates to manage their day-to-day financial activities effectively.",
+                                    "processed": false,
+                                    "children": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

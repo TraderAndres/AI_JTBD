@@ -1,3 +1,19 @@
-- **High Level Job**: No description provided
-    - **Job1**: Description1
-    - **Job2**: Description2
+- **Finance**: Root node for industry hierarchy
+    - **Banking**: Deals with deposit accounts, loans, and credit services.
+        - **Retail Banking**: Provides services to individual consumers.
+            - **End Users - Providers**: End Users who provide services or products.
+                - **Service Providers**: Companies that offer financial services.
+                - **Product Providers**: Firms that develop financial products.
+            - **End Users - Customers**: End Users who purchase services or products.
+                - **Individual Consumers**: People looking for personal banking solutions.
+                - **Small Businesses**: Enterprises requiring financial support.
+        - **Corporate Banking**: Offers financial services to businesses.
+            - **End Users - Providers**: End Users who provide services or products.
+            - **End Users - Customers**: End Users who purchase services or products.
+    - **Investment**: Focuses on asset management, securities trading, and advisory services.
+        - **Asset Management**: Manages client assets and investments.
+            - **End Users - Providers**: End Users who provide services or products.
+            - **End Users - Customers**: End Users who purchase services or products.
+        - **Investment Banking**: Provides advisory and capital raising services.
+            - **End Users - Providers**: End Users who provide services or products.
+            - **End Users - Customers**: End Users who purchase services or products.

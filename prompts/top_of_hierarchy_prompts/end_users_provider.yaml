@@ -6,7 +6,7 @@ description: |
 prompt: |
   Act as an expert in industry classification. Within the {industry} industry, and then within the {sector} sector, and then within the {subsector} subsector, create a {fidelity} list of {n} related roles that support the work (or service) and include a brief description. For example, within the **Agriculture, Forestry, Fishing, and Hunting industry**, and then within the **Animal Production and Aquaculture** sector, and then within the **Dairy Cattle and Milk Production** subsector the role might be **Dairy Farmer.** The structure of your response should be as follows:
 
-  1. **Role**: This is where you describe the role.
+  1. **Role Name**: This is where you describe the role.
 
   Do not output anything before, or after the list.
 

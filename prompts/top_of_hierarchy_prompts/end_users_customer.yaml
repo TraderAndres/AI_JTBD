@@ -6,7 +6,7 @@ description: |
 prompt: |
   Act as an expert in industry classification. Within the {industry} industry, and then within the {sector} sector, and then within the {subsector} subsector, create a {fidelity} list of {n} related end user (people who purchase sector products and services) roles that benefit from related solutions and include a brief description. For example, within the **Cloud Computing Services industry**, and then within the **Software as a Service (SaaS)** sector, and then within the **Customer Relationship Management (CRM) Software** subsector, the role might be **Marketing Analyst**. In the **Plumbing, Heating, and Air-Conditioning** sector, the role might be a home owner. The structure of your response should be as follows:
 
-  1. **Role**: This is where you describe the role.
+  1. **Role Name**: This is where you describe the role.
 
   Do not output anything before, or after the list.
 
