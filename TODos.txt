@@ -1,6 +1,6 @@
 - Pass BOTH names and descriptions to prompt variables
 - Make sure picks up where left off in saved JSON and maybe stores some value as to the last node processed so knows exactly WHERE to pick up? 
 - use function calling for more consistent outputs.
-- Upgrade to Mongo for better data management and when link with vector store for search
 - parallelize the layers so can get the results MUCH faster.  Need to figure out throughput limits. 
+- consider adding vector search
 

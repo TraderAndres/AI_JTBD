@@ -70,12 +70,21 @@ def main():
     # Step 0: Get User Inputs
     industry, fidelity = get_user_inputs()
 
+    # Retrieve MongoDB credentials from environment variables (secrets)
+    mongo_uri = os.getenv("MONGO_URI")
+    mongo_db_name = os.getenv("MONGO_DB_NAME")
+
     # Initialize components
     llm = LLMInterface()
     prompt_builder = PromptBuilder()
-    hierarchy_builder = HierarchyBuilder(llm,
-                                         prompt_builder,
-                                         fidelity=fidelity)
+    # Pass MongoDB credentials to HierarchyBuilder if they exist
+    hierarchy_builder = HierarchyBuilder(
+        llm,
+        prompt_builder,
+        fidelity=fidelity,
+        mongo_uri=mongo_uri,
+        db_name=mongo_db_name
+    )
     visualizer = Visualizer()
 
     # Step 1-4: Build Hierarchy (with iterative saving and resuming)
@@ -83,19 +92,25 @@ def main():
     hierarchy_root = hierarchy_builder.build_hierarchy(industry, fidelity=fidelity, n_end_users=2, n_jobs=2)
     logging.info("Hierarchy generation completed.")
 
-    # Step 2: Visualize Hierarchy
-    logging.info("Displaying generated hierarchy.")
-    # visualizer.display_hierarchy(hierarchy_root)
-
-    # Step 3: Save Hierarchy to JSON File
-    json_filename = f"{industry}_hierarchy.json"
-    save_hierarchy_to_file(hierarchy_root, json_filename)
-    logging.info(f"Hierarchy saved to '{json_filename}'.")
-
-    # Step 4: Convert and Save Hierarchy to Text File
+    # Step 2: Save Hierarchy to Markdown Format
     text_filename = f"{industry}_hierarchy_output.md"
-    save_hierarchy_to_markdown(json_filename, text_filename)
+    save_hierarchy_to_markdown(hierarchy_root, text_filename)
     logging.info(f"Hierarchical text saved to '{text_filename}'. You can now copy and paste this into Coda or Notion.")
+
+
+    # # Step 2: Visualize Hierarchy
+    # logging.info("Displaying generated hierarchy.")
+    # # visualizer.display_hierarchy(hierarchy_root)
+
+    # # Step 3: Save Hierarchy to JSON File
+    # # json_filename = f"{industry}_hierarchy.json"
+    # # save_hierarchy_to_file(hierarchy_root, json_filename)
+    # # logging.info(f"Hierarchy saved to '{json_filename}'.")
+
+    # # Step 4: Convert and Save Hierarchy to Text File
+    # text_filename = f"{industry}_hierarchy_output.md"
+    # save_hierarchy_to_markdown(json_filename, text_filename)
+    # logging.info(f"Hierarchical text saved to '{text_filename}'. You can now copy and paste this into Coda or Notion.")
 
 
     # # Step 5: List all Jobs and Allow User to Select
@@ -114,11 +129,14 @@ def main():
 
 
 if __name__ == "__main__":
-    # Ensure OPENAI_API_KEY is set
+    # Ensure MongoDB and OpenAI API keys are set
     if not os.getenv("OPENAI_API_KEY"):
         print("Error: The environment variable OPENAI_API_KEY is not set.")
-        print(
-            "Please set it using 'export OPENAI_API_KEY=your_api_key' and try again."
-        )
+        print("Please set it using 'export OPENAI_API_KEY=your_api_key' and try again.")
+    elif not os.getenv("MONGO_URI") or not os.getenv("MONGO_DB_NAME"):
+        print("Error: The environment variables MONGO_URI and/or MONGO_DB_NAME are not set.")
+        print("Please set them using the Secrets tab in Replit.")
     else:
         main()
+
+

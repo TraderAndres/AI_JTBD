@@ -62,7 +62,23 @@ def render_hierarchy_markdown(root):
     return "\n".join(lines) + "\n"  # Add trailing newline
 
 
-def save_hierarchy_to_markdown(json_filename, markdown_filename):
+def save_hierarchy_to_markdown(hierarchy_root, markdown_filename):
+    """
+    Converts the hierarchy from a tree structure to Markdown and saves it to a Markdown file.
+
+    Args:
+        hierarchy_root (Node): The root node of the hierarchy tree structure.
+        markdown_filename (str): The name of the Markdown file to save the output.
+    """
+    # Convert the hierarchy tree to Markdown format
+    markdown_text = render_hierarchy_markdown(hierarchy_root)
+
+    # Save the Markdown text to a file
+    with open(markdown_filename, 'w') as f:
+        f.write(markdown_text)
+
+
+def save_json_hierarchy_to_markdown(json_filename, markdown_filename):
     """
     Loads the hierarchy from a JSON file, converts it to Markdown, and saves it to a Markdown file.
     """
