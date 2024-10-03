@@ -1,0 +1,340 @@
+# prompts/themed_desired_outcomes.yaml
+
+description: |
+  Generates a list of themed success statements that group related success metrics under common themes, enhancing clarity and organization.
+
+prompt: |
+  ## System
+
+  Set the temperature to {temp}. Act as a(n) {end_user} with a deep expertise in Jobs-to-be-Done theory. As you know, each Job Step has success statements that represent the desired outcomes or outputs an end user aims to achieve. For each Step submitted for the job {job} {context}, please generate a list of themed success statements that a(n) {end_user} desires.
+
+  ## Goal
+  - Develop these statements based on your understanding of the key categories related to problems and common attributes of waste when consuming a product or service.
+
+  - They should also take into account the potential for forcing a(n) {end_user} into repetitive tasks. For example, end users don't want to have to communicate the same more than once, or do the same thing more than once.
+
+  - Also consider statements that are focused on what needs to be avoided in order to be successful. These should only account for approximately 20% of the statements. None of the statements should describe how to accomplish something.
+
+  For each Job Step, generate a list of {n} themed success statements related to a(n) {end_user} trying to {step}. Think step-by-step.
+
+  Bad Words & Phrases:
+
+  | Bad | Good option | Reason |
+  | --- | --- | --- |
+  | does not | fails to | Do not use negative auxiliary verbs |
+  | is not | | Do not use negative auxiliary verbs |
+  | do not | fail to | |
+  | or | | The success statement should not incorporate trade-offs or make the end user make a choice between two things |
+  | of not | failing to | |
+  | and | | there should only be one success consideration per statement |
+
+  Good & Bad Statements (SHORT):
+
+  Always include examples on the end of a success statement.
+
+  | Bad statement | Good statement | Reason |
+  | --- | --- | --- |
+  | | Minimize the time it takes to confirm the equipment is operating within required parameters, e.g. temperature range, speed settings, accuracy, etc. | It elaborates with clear examples |
+  | | Minimize the time it takes to verify all safety mechanisms and alarms are functioning properly, e.g., sensor calibration, redundant fail-safes, etc. | It elaborates with clear examples |
+  | Calculate key financial metrics and ratios, such as your savings rate, debt-to-income ratio, or investment returns, to provide insights into your financial performance and goal achievement | Minimize the time it takes to gain clarity on your financial progress, e.g., evaluate key financial metrics, talk to an advisor, etc. | Using “your” here is fine because it is focused on ‘you’ as a solution |
+  | Minimize the likelihood that poorly defined productivity goals lead to misalignment in resource allocation. | Minimize the likelihood of misaligning resource allocation, e.g., due to poorly define productivity goals, etc. | The bad example is focused on the result and not the action |
+  | Minimize the likelihood of emergency situations due to shipment or team delays | Minimize the likelihood of emergency situations, e.g., shipment delays, team delays, etc. | Any cause should be expressed as an example, and not in the statement itself |
+  | Minimize the likelihood that unstable connection triggers extra costs, e.g., failover to expensive network, manual troubleshooting, etc. | Minimize the likelihood that extra costs are triggered by an unstable connection, e.g., failover to expensive network, manual troubleshooting, etc. | The bad example is focused on the result and not the action |
+
+  ## MECE SCALING
+
+  The collection of statements should be MECE. Because the number I ask for could be different each time, take this into account as you ensure that you have complete coverage of concepts. Therefore, some outputs may have more highly themed statements (fewer statements) and some may be more granular (more statements). Use the following example to think this through.
+
+  ## Example:
+
+  - If you would have generated two statements but have been limited by small number statements, before you output them you can consolidate your output like this. Here are two statements that you might need to combine into one:
+
+    1. Understand the interest rates when financing.
+
+    2. Understand the repayment period when financing.
+
+  - You could combine them (theme up) to something like this, which includes examples of the object of control (defined below):
+
+    1. Understand the terms and conditions associated with each financing option, e.g. interest rates, repayment period, etc.
+
+  The opposite is true when you have room for more statements.
+
+  ## END MECE
+
+  Structure Rules:
+
+  - Statements should not include the quality of the outcome. For example, never use adverbs like 'accurately', 'effortlessly', 'quickly', 'efficiently', 'easily' anywhere in a success statement. Do not use them, or words like them, at all.
+
+  - Do not begin statements with the word "if."
+
+  - State the success statement in the affirmative.
+
+  - Do not use "and" or "or" in the statements.
+
+  - Do not put suggestions about 'how' or 'where' in the statement.
+
+  - Do not begin or end a statement with an adverb. Pay special attention to this.
+
+  - Do begin each statement with a verb.
+
+  - Do use verbs that reflect the ultimate outcome.
+
+  - Do not use verbs that could be interpreted as how to reach the ultimate outcome.
+
+  - **IMPORTANT:** Never use verbs that are activities or tasks in the object of control. Examples: schedule, calculate, cover, test, etc. The verbs you select should be related to outcomes a(n) {end_user} is trying to accomplish, not HOW they are trying to accomplish them. Think through the 5-Whys step-by-step.
+
+  ---
+
+  - Do not use connective words in a statement. Never use “and” to connect to things. Never use "or". These would be better suited for separate statements.
+
+  - Do not reference end users in the statement: Do not use words like "you" or "your". Do not begin a statement with "You" or "Your".
+
+  - When you need to include examples instead of using “such as” or “for example,” please append the statement with a comma, then “e.g.,” and finish with a comma and “etc.”
+
+  - For statements about what must be avoided, begin the statement with the word 'Avoid'.
+
+  - Always use a single verb. Do not combine two verbs with “and” or “or”.
+
+  ### Formatting Rules (Survey Version):
+
+  - Do not output any content before the list of statements.
+
+  - Do not output anything after the list of statements.
+
+  - Do not output a test-fit example.
+
+  - Always make sure the statement is relevant to the current step and not a preceding or subsequent step.
+
+  - Statements should be in a logical sequence of precedence and dependence.
+
+  - Do not generate a statement that restates the job step.
+
+  ### ODI Rules
+
+  Now that you have constructed the base statement, I'm going to give you a very important further instruction. There are three (3) formats for the final success statement. These formats are prepended to the success statement you generated. Only use the prepends that are inside the quotes. The word “Avoid” should be replaced with a version using the second and third format type. The rest is instructional:
+
+  1. “Minimize the **time it takes to** ... (do something)” - this should be applied to all statements that are not about avoidance.
+
+  2. “Minimize the **likelihood that** ... (something causes an undesirable result)” - this is one of the formats used when you are trying to avoid an undesired result.
+
+  3. “Minimize the **likelihood of** ... (something undesirable happening)” - this is one of the formats used when you are trying to avoid something undesirable from happening.
+
+  ---
+
+  The following defines the required structure. Always use this structure:
+
+  1. **Direction of improvement** = Minimize (MANDATORY)
+
+  2. **Metric** = one of the 3 formats above (MANDATORY)
+
+  3. **Object of control** (MANDATORY)
+
+  4. **Contextual clarifier** (OPTIONAL)
+
+  5. **Example of object of control** (MANDATORY) - but never use more than 3 examples
+
+  **Example structure:** Minimize + the time it takes to + verify the accuracy of a desired outcome + with a customer +, e.g., its meaning, its completeness, its exactness, etc.
+
+  **Finished example:** Minimize the time it takes to verify the accuracy of a desired outcome with a customer, e.g., its meaning, its completeness, its exactness, etc.
+
+  ### Additional examples:
+
+  1. Minimize the likelihood of **undetected defects**, e.g., performance issues, loose components, calibration drift, software bugs, etc.
+
+  2. Minimize the time it takes to **confirm** all repaired or replaced parts are fully operational, e.g., motors, circuit boards, pumps, etc.
+
+  3. Minimize the time it takes to **verify** all initially reported problems have been fully resolved, e.g., error messages, abnormal readings, fault codes, etc.
+
+  Only use a maximum of three (3) examples of the object of control.
+
+  ### Format types 2 and 3:
+
+  - Should only account for about 20% of all statements.
+
+  - Prioritize "Minimize the time it takes to" statements over the "Minimize the likelihood..." statements.
+
+  - Should not be framed in the negative. In other words, do not output a statement like: "Minimize the likelihood of not reviewing and updating key initiatives as market conditions change" because it is minimizing the likelihood of not doing something. Also, do not include a connective word such as as “and” or “or”. A better format would be: "Minimize the likelihood of failing to track key initiatives as market conditions change."
+
+  **The next instruction is EXTREMELY IMPORTANT**
+
+  Format types 2 and 3 should NEVER use the words or phrases "not", "does not", "do not", "is not", or "of not". For example, this statement:
+
+  "Minimize the likelihood that the identified data sources do not capture key customer insights" should be stated as:
+
+  "Minimize the likelihood that the identified data sources fail to capture key customer insights."
+
+  **END ODI RULES**
+
+  ### Final Rules
+
+  Finally, you need to run this through a test-fit structure to ensure that it makes sense. Here is the structure:
+
+  As a(n) {end_user} who is {Job} {context} you're trying to <generated output> so that you can successfully {step}.
+
+  Does the success statement make grammatical sense? If so, output the success statement. If not, rework it and test it again.
+
+  ### Output Instructions: Establishing the Benchmark Metric Set
+
+  1. In the context of this conversation, establish a persistent variable called "benchmark" whose content I will refer to by wrapping the variable name in double curly brackets.
+
+  2. Generate an initial benchmark set of {bn} success statements per the specifications and assign them to the variable "benchmark".
+
+  3. This set will serve as the foundation for all subsequent theming or detailing of success metrics you output.
+
+  4. If the request is to produce {n} that is different from {bn}, use {benchmark} as the baseline to either theme-up (for fewer statements) or break down into more detailed and specific statements (for more statements).
+
+  5. Ensure that the re-themed or detailed statements are based on the initial benchmark set {benchmark}, maintaining a direct connection to the original specifications.
+
+  6. **ALWAYS ADHERE TO THIS RULE**: When theming-up, instead of grouping the verbs from multiple benchmarks, I would like you to create a net new metric with a single verb. You may use the example space to express the rolled-up verbs or concepts.
+
+  7. Always be prepared, if subsequently asked, to validate the set of {n} that you output. That includes outputting {benchmark} if asked.
+
+  ### Always Adhere to the Following Output Order:
+
+  - Store the benchmark success statements in {Benchmark} as a numbered list as shown in this example:
+
+    1. **Minimize the time it takes to** determine the brand's mission and vision, e.g. sustainability goals, market leadership, etc.
+
+    2. **Minimize the time it takes to** understand the brand's unique selling propositions, e.g. quality, innovation, etc.
+
+  - Do use the above format to store the benchmark list.
+
+  - Do not output test-fit statements.
+
+  - Do not output a summary of these instructions.
+
+  - Always include the example of the object of control.
+
+  After you store the initial list of {bn} success metrics in the variable {benchmark}, then for the job step, generate a list of {n} success statements related to a(n) {end_user} trying to {step} using the theming instructions mentioned earlier. Think step-by-step. You will be provided one step at a time. The next step will be in a subsequent message; you do not need to ask for it.
+
+  ### Format Change:
+
+  For the output, use the following instructions to reformat the success metrics and generate a list of {n} success statements using only required structure options 3, 4, and 5 from the 'ODI Rules' section:
+
+  1. **Object of control** (MANDATORY)
+
+  2. **Contextual clarifier** (OPTIONAL)
+
+  3. **Example of object of control** (MANDATORY) - but never use more than 3 examples
+
+  If the previous format option used a likelihood metric, prepend the statement with a word such as "Avoid" but make sure that the statement makes sense. Here's an example:
+
+  | Bad | Good |
+  |-----|------|
+  | Avoid incorrect paint type is used, e.g., water-based vs oil-based, indoor vs outdoor, etc. | Avoid using the incorrect paint type, e.g., water-based vs oil-based, indoor vs outdoor, etc. |
+
+  - This new format should always begin with the verb.
+
+  - **Do** format the beginning verb as bold.
+
+  - **Do not** bold the remainder of the object of control.
+
+  - **Do not** italicize the remainder of the object of control.
+
+  - **Do** italicize the "example of the object of control."
+
+  - Always output in markdown format as an ordered list.
+
+  The following examples demonstrate the new format I expect you to follow:
+
+  - **Allocate** sufficient time for the job, e.g., drying time, multiple coats, etc.
+
+  - **Allocate** = Verb
+
+  - Sufficient time for the job = Object of Control
+
+  - e.g., drying time, multiple coats, etc. = Example
+
+  - **Avoid** using the incorrect paint type, e.g., water-based vs oil-based, indoor vs outdoor, etc.
+
+  - **Avoid** = Verb
+
+  - Using the incorrect paint type = Object of Control
+
+  - e.g., water-based vs oil-based, indoor vs outdoor, etc. = Example
+
+  Please note that only the example portion is italicized.
+
+  ### Output Logic
+
+  Use the following basic logic to determine what elements to output. Only output what passes these tests:
+
+  IF {outputbn} = "Yes" THEN
+
+  - Output the contents of the {benchmark}.
+
+  - Output {n} themed-up success statement based on the {Benchmark} set.
+
+  Then explain step-by-step your approach and logic to theming up or breaking down the list of {n} success statements based on the {Benchmark} set.
+
+  ELSE
+
+  - Output {n} themed-up success statement based on the {Benchmark} set.
+
+  END IF
+
+  End user: {end_user}
+  Job: {job}
+  Context: {context}
+  Step: {step}
+  n: {n}
+  bn: {bn}
+  outputbn: {outputbn} 
+  temp: {temp}
+
+# parameters:
+#   end_user: The role or title of the end user.
+#   job: The high-level job to be analyzed.
+#   context: Additional context or circumstances related to the job.
+#   step: The specific step within the job for which success statements are being generated.
+#   n: The number of success statements to generate.
+#   bn: The benchmark number of success statements.
+#   outputbn: Whether to output the benchmark set ("Yes" or "No").
+#   temp: The temperature setting for the LLM (e.g., 0.1).
+
+parameters:
+  end_user:
+    description: The role or title of the end user.
+    type: string
+    required: true
+  
+  job:
+    description: The high-level job or task to be analyzed.
+    type: string
+    required: true
+  
+  context:
+    description: Additional context or circumstances related to the job being performed.
+    type: string
+    required: false
+    default: ""  # Default empty value if no context is provided
+  
+  step:
+    description: The specific step within the job process for which success statements are being generated.
+    type: string
+    required: false
+    default: ""  # Optional with default empty value
+  
+  n:
+    description: The number of success statements to generate.
+    type: integer
+    required: false
+    default: 10  # Default value for the number of success statements
+  
+  bn:
+    description: The benchmark number of success statements to use for comparison or evaluation.
+    type: integer
+    required: false
+    default: 20  # Default value for the benchmark number of success statements
+  
+  outputbn:
+    description: Indicates whether to output the benchmark set. Expected values are "Yes" or "No".
+    type: string
+    required: false
+    default: "No"  # Default value is "No"
+  
+  temp:
+    description: The temperature setting for the language model, controlling the randomness of its output (e.g., 0.1 for more deterministic results, 0.9 for more varied results).
+    type: float
+    required: false
+    default: 0.3  # Default temperature value

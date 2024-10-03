@@ -1,0 +1,87 @@
+# prompts/financial_metrics_of_purchasing_decision_makers.yaml
+
+description: |
+  Generates a list of financial metric statements that purchase decision-makers use to evaluate competing offerings for a product or service.
+
+prompt: |
+  Set the temperature to {temp}. Act as a {end_user} for products or services used when {job} {context}.
+
+  The {end_user} of a product or service evaluates competing offerings against a set of financial metrics when trying to decide which product or service to acquire. Knowing the buyer’s financial metrics informs a company’s go-to-market strategy and the value proposition it communicates to the buyer.
+
+  Financial metrics are structured in the same way as desired outcomes on the core job and consumption chain jobs:
+
+  [Direction of improvement] + [metric] + [object of control] + [contextual clarifier]
+
+  One key difference in the way a financial metric is stated is that the metric used in the statement is rarely “time” or “likelihood”. Instead the metric most commonly used is “cost.”
+
+  When constructing financial metric statements that begin with “minimize the cost...”, the object of control is always a noun. In many cases buyers describe how they want to “minimize the cost of [noun]. For example, buyers of specialized tools may say they want to:
+
+  * [Minimize] + [the cost] + [of purchase] + [including discounts]
+
+  * [Minimize] + [the cost] + [of financing the purchase]
+
+  * [Minimize] + [the cost] + [of shipping]
+
+  * [Minimize] + [the cost] + [of storing the product] + [until it is needed]
+
+  * [Minimize] + [the cost] + [of disposing of packaging waste]
+
+  * [Minimize] + [the cost] + [of consumables] + [needed to use the product]
+
+  * [Minimize] + [the cost] + [of cleaning the product] + [after each use]
+
+  Cost issues relating to the initial purchase, the cost of use over time and the execution of consumption chain jobs are common. Buyers also often state performance metrics (KPIs) when discussing their financial metrics. For example, a buyer of products used in a hospital may use the following performance metrics to evaluate a purchase decision:
+
+  * [Minimize] + [the likelihood of] + [a patient’s re-admittance]
+
+  * [Minimize] + [the amount of time] + [the patient spends in the hospital]
+
+  These types of statements are included in the list of financial metrics and test them in the survey. It offers additional insight when defining a value proposition that resonates with the buyer.
+
+  Output the statements using the following example as the format:
+
+  * Minimize the cost of professional training required to use the handheld circular saw effectively.
+
+  * Minimize the cost of accessories and attachments for specialized cuts
+
+  Generate a list of {n} financial metric statements using the instructions above
+
+  End User: Purchase decision-maker
+  Job: {job}
+  Context: {context}
+  n: {n}
+  temp: {temp}
+
+parameters:
+  end_user:
+    description: The role of the end user.
+    type: string
+    required: true
+    default: "Purchase decision-maker"  # If there's a sensible default
+  job:
+    description: The job title.
+    type: string
+    required: true
+  context:
+    description: The context or description of the job.
+    type: string
+    required: true
+  n:
+    description: Number of financial metrics to generate.
+    type: string
+    required: true
+  temp:
+    description: The temperature for the LLM.
+    type: float
+    required: false
+    default: 0.1
+# parameters:
+#   end_user: Purchase decision-maker
+#   job:
+#   context:
+#   n:
+#   temp:
+#     description: The temperature for the LLM
+#     type: string
+#     required: false  # Indicates that this parameter is optional
+#     default: "0.1"  # Default value if none is provided

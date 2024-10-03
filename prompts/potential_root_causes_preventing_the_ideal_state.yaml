@@ -1,0 +1,58 @@
+# prompts/potential_root_causes_preventing_the_ideal_state.yaml
+
+description: |
+  Generates a list of potential root causes that prevent the end user from achieving the ideal state of the job. Each root cause is explained in detail.
+
+prompt: |
+  Set the temperature to {temp}. Please provide a list of {n} potential root causes related to the inability of a(n) {end_user} to {ideal} when {job}{context}. For example, if the desired outcome is "The front lawn appears green," then provide all of the possible factors that could contribute to it not being green.
+
+  The collection of statements should be MECE. Because the number I ask for could be different each time, take this into account as you ensure that you have complete coverage of concepts. Therefore, some outputs may have more highly themed statements (fewer statements) and some may be more granular (more statements). Use the following example to think this through.
+
+  Please output each root cause in bold and explain each root cause in italics after a hyphen. Limit the explanation to a single sentence. Output as an ordered list. Here is an example:
+
+  * Limited Information Available - Inadequate product descriptions or specifications can lead to uncertainty about the material quality.
+
+  Always output in markdown
+
+  End user: {end_user}
+  Job: {job}
+  Context: {context}
+  Ideal: {ideal}
+  n: {n}
+  temp: {temp}
+
+parameters:
+  temp:
+    description: The temperature setting for the language model, controlling the randomness of its output. A higher value (e.g., 0.9) results in more varied outputs, while a lower value (e.g., 0.1) makes the outputs more deterministic.
+    type: float
+    required: false
+    default: 0.1  # Default temperature setting; adjust as needed
+  
+  end_user:
+    description: The role or title of the end user performing the job or interacting with the model.
+    type: string
+    required: true
+  
+  job:
+    description: The high-level job or task being analyzed or discussed.
+    type: string
+    required: true
+  
+  context:
+    description: Additional context or circumstances related to the job or the situation in which the job is being performed.
+    type: string
+    required: false  # Marked as optional since context may not always be necessary
+    default: ""  # Empty default value for context
+  
+  ideal:
+    description: The ideal outcome, result, or success criteria for the job. Used to guide the expected outcome or direction of the analysis.
+    type: string
+    required: false  # Marked as optional, as not all prompts may require this
+    default: ""  # Default empty value if not provided
+  
+  n:
+    description: The number of items, steps, or contexts to generate. Typically used for controlling the output length or amount.
+    type: integer  # Changed to integer since 'n' usually represents a count
+    required: false
+    default: 5  # Default value of 5 for generating multiple items
+  

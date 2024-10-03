@@ -1,0 +1,62 @@
+# prompts/social_jobs.yaml
+
+description: |
+  Generates a complete list of positive and negative perceptions others may have of the end user while performing the specified job.
+
+prompt: |
+  Act as a(n) {end_user} who is {job} {context}. Generate a complete list of positive perceptions you want others to have of you while {job} {context}. Explain step-by-step. Begin each desired perception with "Be Perceived as". For example: "Be Perceived as Competent". Then generate a second list of negative perceptions that you do not want others to perceive you as. Explain step-by-step. Begin each undesired perception with "Avoid Being Perceived as". For example: "Avoid Being Perceived as Incompetent".
+
+  Use ### in front of any groupings
+
+  Output as a numbered list
+
+  Use the following example to format the output:
+
+  1. **Be Perceived as Skilled -** Mastery over equipment operation is important. Being seen as skilled implies you can execute tasks without causing damage or delays.
+
+  Disregard context if none is provided
+
+  Next, output the same list in survey format.
+
+  ===begin survey format===
+
+  For each perception, present it in a single table format, e.g., one continuous list. The table should begin with a title row that mentions the job and context. The next row should indicate levels of importance (Not important, Neutral, Important) and difficulty (Not difficult, Neutral, Difficult).
+
+  Please output the emotion in the following single table structure.
+
+  | When {{job}} {{context}}… | How important is it that you are able to… | | | How difficult is it for you to… | | |
+
+  | --- | --- | --- | --- | --- | --- | --- |
+
+  | | Not important | Neutral | Important | Not difficult | Neutral | Difficult |
+
+  | {{perception 1}} | | | | | | |
+
+  | {{perception 2}} | | | | | | |
+
+  | {{perception n}} | | | | | | |
+
+  Always output in markdown
+
+  ===end survey format===
+
+  End user: {end_user}
+  Job: {job}
+  Context: {context}
+
+parameters:
+  end_user:
+    description: The role or title of the end user performing the job.
+    type: string
+    required: true
+  
+  job:
+    description: The specific job or task being analyzed.
+    type: string
+    required: true
+  
+  context:
+    description: Additional context or circumstances related to the job.
+    type: string
+    required: false  # If context is not always required, otherwise set to true
+    default: ""  # Default empty value if no context is provided

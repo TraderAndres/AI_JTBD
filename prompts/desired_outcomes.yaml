@@ -1,0 +1,231 @@
+# prompts/desired_outcomes.yaml
+
+description: |
+  Generates a list of success statements (desired outcomes) that an end user aims to achieve for each job step, considering key categories related to problems and waste attributes.
+  
+prompt: |
+  Act as a(n) {end_user} with a deep expertise in Jobs-to-be-Done theory. As you know, each Job Step has success statements that represent the desired outcomes or outputs an end user aims to achieve. For each Step submitted for the job {job} {context}, please generate a list of success statements that a(n) {end_user} desires. 
+
+
+
+  - Develop these statements based on your understanding of the key categories related to problems and common attributes of waste when consuming a product or service.
+
+  - They should also take into account the potential for forcing a(n) {end_user} into repetitive tasks. For example, end users don't want to have to communicate the same more than once, or do the same thing more than once.
+
+  - Also consider statements that are focused on what needs to be avoided in order to be successful. These should only account for approximately 20% of the statements. None of the statements should describe how to accomplish something.
+
+
+  For each Job Step, generate a list of {n} success statements related to a(n) {end_user} trying to {step}. Think step-by-step. 
+
+  Bad Words & Phrases:
+
+
+  | Bad | Good option | Reason |
+
+  | --- | --- | --- |
+
+  | does not | fails to | Do not use negative auxiliary verbs |
+
+  | is not |  | Do not use negative auxiliary verbs |
+
+  | do not | fail to |  |
+
+  | or |  | The success statement should not incorporate trade-offs or make the end user make a choice between two things |
+
+  | of not | failing to |  |
+
+  | and |  | there should only be one success consideration per statement |
+
+
+
+  Good & Bad Statements (SHORT):
+
+  Always include examples on the end of a success statement.
+
+
+  | Bad statement | Good statement | Reason |
+
+  | --- | --- | --- |
+
+  |  | Minimize the time it takes to confirm the equipment is operating within required parameters, e.g., temperature range, speed settings, accuracy, etc. | It elaborates with clear examples |
+
+  |  | Minimize the time it takes to verify all safety mechanisms and alarms are functioning properly, e.g., sensor calibration, redundant fail-safes, etc. | It elaborates with clear examples |
+
+  | Calculate key financial metrics and ratios, such as your savings rate, debt-to-income ratio, or investment returns, to provide insights into your financial performance and goal achievement | Minimize the time it takes to gain clarity on your financial progress, e.g., evaluate key financial metrics, talk to an advisor, etc. | Using “your” here is fine because it is focused on ‘you’ as a solution |
+
+  | Minimize the likelihood that poorly defined productivity goals lead to misalignment in resource allocation. | Minimize the likelihood of misaligning resource allocation, e.g., due to poorly define productivity goals, etc. | The bad example is focused on the result and not the action |
+
+  | Minimize the likelihood of emergency situations due to shipment or team delays | Minimize the likelihood of emergency situations, e.g., shipment delays, team delays, etc. | Any cause should be expressed as an example, and not in the statement itself |
+
+  | Minimize the likelihood that unstable connection triggers extra costs, e.g., failover to expensive network, manual troubleshooting, etc. | Minimize the likelihood that extra costs are triggered by an unstable connection, e.g., failover to expensive network, manual troubleshooting, etc. | The bad example is focused on the result and not the action |
+
+
+
+  ## MECE SCALING
+
+  The collection of statements should be MECE. Because the number I ask for could be different each time, take this into account as you ensure that you have complete coverage of concepts. Therefore, some outputs may have more highly themed statements (fewer statements) and some may be more granular (more statements). Use the following example to think this through.
+
+  Example:
+
+  If you would have generated two statements but have been limited by small number statements, before you output them you can consolidate your output like this. Here are two statements that you might need to combine into one:
+
+
+  1. Understand the interest rates when financing
+
+  2. Understand the repayment period when financing
+
+
+  You could combine them (theme up) to something like this, which includes examples of the object of control (defined below)…
+
+  1. Understand the terms and conditions associated with each financing option, e.g., interest rates, repayment period, etc.
+
+  The opposite is true when you have room for more statements.
+
+  ## END MECE
+
+  Structure Rules:
+
+
+  - Statements should not include the quality of the outcome. For example, never use adverbs like ‘accurately’, ‘effortlessly’, ‘quickly’’, efficiently’, ‘easily’ anywhere in a success statement. Do not use them, or words like them, at all
+
+  - Do not begin statements with the work ‘if’
+
+  - State the success statement in the affirmative
+
+  - Do not use ‘and’ or ‘or’ in the statements
+
+  - Do not put suggestions about ‘how’ or ‘where’ in the statement
+
+  - Do not begin or end a statement with an adverb. Pay special attention to this
+
+  - Do begin each statement with a verb
+
+  - Do not use connective words in a statement. Never use “and” to connect to things. Never use “or”. These would be better suited for separate statements
+
+  - Do not reference end users in the statement. Do not use words like “you” or “your”. Do not begin a statement with “You” or “Your”.
+
+  - When you need to included examples, instead of using "such as" or "for example" please append the statement with a comma, then "e.g.," and finish with a comma and "etc."
+
+  - For statements about what must be avoided, begin the statement with the word ‘Avoid’
+
+
+  Formatting Rules (Survey Version):
+
+  - Do not output any content before the list of statements
+
+  - Do not output anything after the of statements
+
+  - Do not output a test-fit example
+
+  - Always make sure the statement is relevant to the current step, and not a preceding or subsequent step
+
+  - Statements should be in a logical sequence of precedence and dependence.
+
+  - Do not generate a statement that restates the job step
+
+
+  ## ODI Rules
+
+  Now that you have constructed the base statement I’m going to give you a very important further instruction. There are three (3) formats for the final success statement. These formats are pre-pended to the success statement you generated. These are the three types. Only use the prepends that are inside the quotes. The word “Avoid” should be replaced with a version using the second and third format type. The rest is instructional:
+
+
+  1. “Minimize the **time it takes to “**…(do something) - this should be applied to all statements that are not about avoidance.
+
+  2. “Minimize the **likelihood that “**…(something causes an undesirable result) - this is one of formats used when you are trying to avoid an undesired result.
+
+  3. “Minimize the **likelihood of “**…(something undesirable happening) - this is one of the formats used when your are trying to avoid something undesirable from happening.
+
+
+  The following defines the required structure. Always use this structure.
+
+
+  1. Direction of improvement = Minimize [MANDATORY]
+
+  2. Metric = one of the 3 formats above [MANDATORY]
+
+  3. Object of control [MANDATORY]
+
+  4. Contextual clarifier [OPTIONAL]
+
+  5. Example of object of control [MANDATORY] - but never use more than 3 examples
+
+
+  Example structure: Minimize + the time it takes to + verify the accuracy of a desired outcome + with a customer + , e.g., its meaning, its completeness, its exactness, etc.
+
+  Finished example: Minimize the time it takes to **verify** the accuracy of a desired outcome with a customer, *e.g., its meaning, its completeness, its exactness, etc.*
+
+
+  Additional examples:
+
+  1. **Minimize the likelihood of** *undetected defects or performance issues*, e.g., loose components, calibration drift, software bugs, etc.
+
+  2. **Minimize the likelihood that** *extra costs are triggered* by an unstable connection, e.g., failover to expensive network, manual troubleshooting, etc.
+
+
+  Only use a maximum of three (3) examples of the object of control
+
+  Format types 2 and 3 should only account for about 20% of all statements. Also, prioritize “Minimize the time it takes to” statements over the “Minimize the likelihood…” statements.
+
+  Format types 2 and 3 should not be framed in the negative. In other words do not output a statement like this: “Minimize the likelihood of not reviewing and updating key initiatives as market conditions change” because it is minimizing the likelihood of not doing something. Also, do not include a connective word such as as “and” or “or”. A better format would be “Minimize the likelihood of failing to track key initiatives as market conditions change”
+
+  The next instructions is EXTREMELY IMPORTANT
+
+  Format types 2 and 3 should NEVER use the words or phrases “not”, “does not”, “do not”, “is not”, or “of not”. For example this statement “Minimize the likelihood that the identified data sources do not capture key customer insights” should be stated as “Minimize the likelihood that the identified data sources fail to capture key customer insights”
+
+  ##END ODI
+
+
+  Finally, you need to run this through a test-fit structure to ensure that it makes sense. Here is the structure:
+
+  As a(an) {end_user} + who is + {job} {context} you're trying to + so that you can successfully {step}
+
+  Does the success statement make grammatical sense? If so, output the success statement. If not, rework it and test it again.
+
+
+  OUTPUT INSTRUCTIONS:
+
+  Output all of the success statements as a numbered list in markdown as shown in this example:
+
+  1. **Minimize the time it takes to** *determine the brand's mission and vision*, e.g., sustainability goals, market leadership, etc.
+
+  2. **Minimize the time it takes to** *understand the brand's unique selling propositions*, e.g., quality, innovation, etc.
+
+
+  Do not output test-fit statements
+
+  Do not out put a summary of this these instructions
+
+  Always include the example of the object of control
+
+
+  End User: {end_user}
+  Job: {job}
+  Context: {context}
+  Step: {step}
+  n: {n}
+
+parameters:
+  end_user:
+    description: The role or title of the end user performing the job.
+    type: string
+    required: true
+
+  job:
+    description: The specific job or task being analyzed.
+    type: string
+    required: true
+
+  context:
+    description: Additional context or circumstances related to the job.
+    type: string
+    required: true
+
+  step:
+    description: The step within the job map process or phase.
+    type: string
+    required: true
+
+  n:
+    description: The number of steps or contexts to generate.
+    type: integer  # Updated to integer based on typical usage for a count
+    required: true

@@ -1,7 +1,10 @@
 # prompts/job_contexts.yaml
 
-template: |
-  Act as a(n) {{end_user}} who is {{job}}. List {{n}} contexts in which you could be {{job}}.
+description: |
+  Generates a list of contexts in which the end user could be performing the specified job. Each context is explained in detail.
+
+prompt: |
+  Act as a(n) {end_user} who is {job}. List {n} contexts in which you could be {job}.
 
   The term context in problem-solving refers to the surrounding information that is necessary to understand the problem and find a solution. It involves identifying what issues are to be considered as ‘problems’ to solve, exploring and finally deciding on how to think about the problem, assigning responsibility, naming the team, allocating resources, setting the schedule, and naming key stakeholders. The actual effort to solve the problem involves understanding its cause, designing some corrective action, and implementing the solution. It also involves dealing with pragmatics, the way that context contributes to meaning, and semantics, the interpretation of the problem. Observing what is going on in your environment; identifying things that could be changed or improved; diagnosing why the current state is the way it is and the factors and forces that influence it; developing approaches and alternatives to influence change; making decisions about which alternative to select; taking action to implement the changes; and observing impact of those actions in the environment
 
@@ -13,6 +16,20 @@ template: |
 
   1. **IT Managed Services Provider** - A company looking to outsource the management of their IT infrastructure. This often includes network management, security, and data storage solutions.
 
-  End user:
-  Job:
+  End user: {end_user}
+  Job: {job}
+  n: {n}
+
+parameters:
+  end_user:
+    description: The role or title of the end user performing the job.
+    type: string
+    required: true
+  job:
+    description: The specific job or task being analyzed.
+    type: string
+    required: true
   n:
+    description: The number of contexts to generate.
+    type: integer
+    required: true

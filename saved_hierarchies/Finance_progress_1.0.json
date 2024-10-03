@@ -1,0 +1,409 @@
+{
+    "name": "Finance",
+    "description": "Root node for industry hierarchy",
+    "processed": false,
+    "children": [
+        {
+            "name": "Banking",
+            "description": "This sector encompasses institutions that offer financial services such as accepting deposits, providing loans, and facilitating transactions, including commercial banks, savings banks, and credit unions.",
+            "processed": false,
+            "children": [
+                {
+                    "name": "Commercial Banking",
+                    "description": "This involves providing a range of financial services to individuals and businesses, including checking and savings accounts, loans, and payment processing.",
+                    "processed": false,
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "processed": false,
+                            "children": [
+                                {
+                                    "name": "Loan Officer",
+                                    "description": "A loan officer evaluates, authorizes, or recommends approval of loan applications for individuals and businesses. They help clients understand their loan options and guide them through the application process, ensuring compliance with banking regulations and policies.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Helping Clients Secure Financing",
+                                            "description": "The process of understanding the financial needs of clients, assessing their eligibility for loans, and guiding them through the application process to secure the necessary funding for their business ventures or personal projects.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Financial Solutions",
+                                            "description": "The act of evaluating various financial products and services to offer tailored solutions that meet the specific requirements of clients, ensuring they have access to the right tools for managing their finances effectively and achieving their goals.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Branch Manager",
+                                    "description": "A branch manager oversees the daily operations of a commercial bank branch. They are responsible for managing staff, ensuring customer satisfaction, achieving sales targets, and maintaining compliance with banking regulations. The branch manager plays a critical role in driving business growth and managing relationships with customers.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Providing Financial Solutions",
+                                            "description": "Offering a range of banking products and services tailored to meet the diverse needs of customers, including loans, credit, and investment options. This involves assessing customer requirements, recommending suitable solutions, and facilitating access to necessary financial resources, ultimately aiming to enhance the financial well-being of clients.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Ensuring Regulatory Compliance",
+                                            "description": "Monitoring and adhering to all relevant laws and regulations governing banking operations. This includes implementing policies and procedures to mitigate risks, conducting regular audits, and training staff on compliance matters, thereby fostering trust and security among customers while protecting the integrity of the financial institution.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "processed": false,
+                            "children": [
+                                {
+                                    "name": "Small Business Owner",
+                                    "description": "A small business owner often seeks commercial banking services for business loans, credit lines, and merchant services to manage cash flow and support growth initiatives. They rely on banking solutions to facilitate transactions and provide financial stability.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Obtaining Financing",
+                                            "description": "The process of identifying funding sources that align with the business's financial needs. This includes researching various loan products, preparing necessary documentation, submitting applications, and negotiating terms with lenders to secure the best possible financing for business operations or growth.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Improving Cash Flow Management",
+                                            "description": "The systematic approach to monitoring, analyzing, and optimizing cash inflows and outflows. This involves creating cash flow forecasts, tracking expenses and revenues, identifying trends, and implementing strategies to ensure that the business maintains sufficient liquidity to meet its obligations and support ongoing operations.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Treasury Manager",
+                                    "description": "A treasury manager in a corporate setting is responsible for managing the company's cash, investments, and financial risks. They utilize commercial banking services for cash management, investment accounts, and funding solutions to optimize the company's liquidity and financial operations.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Achieving Liquidity Optimization",
+                                            "description": "The process of assessing cash flow needs and forecasting future cash positions to ensure that the organization has sufficient liquidity to meet its obligations. This includes analyzing cash inflows and outflows, identifying surplus funds, and determining optimal investment strategies for excess cash.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Ensuring Risk Mitigation",
+                                            "description": "The systematic identification and assessment of financial risks, such as interest rate fluctuations and currency exposure, followed by the implementation of strategies to minimize these risks. This involves using financial instruments like derivatives, establishing policies for risk management, and continuously monitoring market conditions to adjust strategies as necessary.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Investment Banking",
+                    "description": "This encompasses services related to raising capital for companies, facilitating mergers and acquisitions, and providing advisory services on financial transactions.",
+                    "processed": false,
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "processed": false,
+                            "children": [
+                                {
+                                    "name": "Investment Banking Analyst",
+                                    "description": "This role involves conducting financial analysis, preparing pitch books, and supporting senior bankers in executing transactions. Analysts are responsible for gathering and analyzing data, creating financial models, and assisting in the due diligence process for mergers and acquisitions.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Creating Financial Models",
+                                            "description": "The process of building detailed representations of a company's financial performance. This involves gathering historical data, making assumptions about future performance, and using financial metrics to forecast revenues, expenses, and cash flows, ultimately enabling better decision-making for clients.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Strategic Advisory",
+                                            "description": "The act of offering expert guidance to clients on mergers, acquisitions, and capital raising. This includes analyzing market conditions, assessing potential targets or partners, preparing pitch materials, and helping clients understand the financial implications and strategic fit of various options, ensuring they make informed decisions that align with their long-term goals.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Mergers and Acquisitions (M&A) Associate",
+                                    "description": "An M&A Associate works closely with clients to facilitate mergers, acquisitions, and other corporate transactions. They lead deal execution, manage client relationships, and coordinate with various stakeholders to ensure smooth transaction processes. Associates also perform valuation analyses and market research to inform strategic decisions.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Identifying Strategic Acquisition Targets",
+                                            "description": "The process of researching and analyzing potential companies that align with the strategic goals of the firm or client. This involves assessing market trends, financial performance, and competitive positioning to pinpoint ideal candidates for acquisition.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Evaluating Financial Performance",
+                                            "description": "The systematic assessment of a target company's financial statements, including income statements, balance sheets, and cash flow statements. This involves analyzing key financial ratios and metrics to determine the company's profitability, liquidity, and overall financial health, which informs the decision-making process for potential mergers or acquisitions.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "processed": false,
+                            "children": [
+                                {
+                                    "name": "Corporate Finance Manager",
+                                    "description": "This role involves overseeing a company's financial activities, including budgeting, forecasting, and financial analysis. Corporate finance managers benefit from investment banking services for capital raising, mergers, and acquisitions to drive corporate growth and strategic initiatives.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Ensuring Compliance",
+                                            "description": "The process of verifying that all financial activities and reporting adhere to relevant regulations and standards. This involves reviewing policies, conducting audits, and implementing controls to mitigate risks associated with non-compliance, ultimately protecting the organization from penalties and reputational damage.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Developing Financial Strategies",
+                                            "description": "The formulation of long-term financial plans that align with the organization's goals. This includes analyzing market trends, assessing investment opportunities, and forecasting financial performance to optimize resource allocation and enhance profitability.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Private Equity Analyst",
+                                    "description": "This role focuses on analyzing investment opportunities in private companies and assessing their financial health and potential for returns. Private equity analysts rely on investment banking firms for due diligence, valuation services, and structuring deals to facilitate successful investments.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Evaluating Investment Opportunities",
+                                            "description": "The process of systematically analyzing potential investment targets by assessing their financial health, growth potential, and market position. This involves gathering data, conducting due diligence, and comparing metrics to identify promising assets that align with the fund's investment strategy.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Developing Financial Models",
+                                            "description": "The creation of detailed financial projections and valuation models to estimate the future performance of potential investments. This includes inputting historical data, assumptions about market conditions, and various scenarios to provide insights into expected returns and risks associated with each investment opportunity.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Investment Services",
+            "description": "This sector includes firms and platforms that provide investment management, advisory services, and brokerage services, focusing on asset management, portfolio management, and securities trading.",
+            "processed": false,
+            "children": [
+                {
+                    "name": "Mutual Funds",
+                    "description": "This involves pooling money from multiple investors to purchase a diversified portfolio of stocks, bonds, or other securities, allowing individuals to invest in a managed fund that aligns with their investment goals.",
+                    "processed": false,
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "processed": false,
+                            "children": [
+                                {
+                                    "name": "Portfolio Manager",
+                                    "description": "A Portfolio Manager is responsible for making investment decisions and managing a portfolio of mutual funds. They analyze market trends, evaluate investment opportunities, and adjust fund allocations to optimize returns while managing risk for investors.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Achieving Investment Growth",
+                                            "description": "The process of strategically selecting and managing a portfolio of mutual funds to maximize returns over a specified timeframe. This involves analyzing market trends, assessing fund performance, and making informed decisions to align with clients' financial goals.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Ensuring Risk Management",
+                                            "description": "The practice of identifying, assessing, and mitigating potential risks associated with investment portfolios. This includes diversifying investments, monitoring market conditions, and adjusting strategies to protect client assets while still aiming to achieve desired returns.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Fund Analyst",
+                                    "description": "A Fund Analyst conducts research and analysis on various mutual funds to assess their performance, risk, and market conditions. They provide insights and recommendations to Portfolio Managers and investors, helping to inform investment strategies and decisions.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Analyzing Investment Performance",
+                                            "description": "The process of evaluating the returns and risks associated with mutual funds to determine their effectiveness. This involves collecting data on fund performance, comparing it to benchmarks, and assessing factors such as volatility and expense ratios to provide insights to clients about their investment choices.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Investment Recommendations",
+                                            "description": "The act of offering tailored advice to clients based on comprehensive analysis of market trends, fund performance, and individual investment goals. This includes identifying suitable mutual funds, explaining their potential benefits and risks, and helping clients make informed decisions to achieve their financial objectives.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "processed": false,
+                            "children": [
+                                {
+                                    "name": "Individual Investor",
+                                    "description": "This role encompasses retail investors who purchase mutual funds to grow their personal wealth over time. They seek diversified investment options that align with their financial goals and risk tolerance, often utilizing mutual funds as a way to gain exposure to various asset classes without needing to manage individual stocks.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Achieving Financial Growth",
+                                            "description": "The process of selecting and investing in mutual funds that are expected to appreciate in value over time. This includes researching different funds, analyzing performance metrics, and understanding market trends to enhance the potential for capital appreciation and income generation.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Obtaining Diversified Investment Exposure",
+                                            "description": "The action of strategically allocating funds across various mutual funds to reduce risk and enhance potential returns. This involves identifying different asset classes and sectors, assessing their correlations, and ensuring a balanced portfolio that can withstand market fluctuations while aiming for optimal performance.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Financial Advisor",
+                                    "description": "Financial advisors are professionals who guide clients in their investment decisions, including the selection of mutual funds. They analyze clients' financial situations, risk tolerance, and investment goals to recommend suitable mutual fund products that can help achieve long-term financial objectives.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Achieving Portfolio Diversification",
+                                            "description": "The Financial Advisor evaluates client investment goals and risk tolerance. They then select a range of mutual funds that invest in different asset classes, sectors, or geographical areas. This process reduces the risk of significant losses by spreading investments across various opportunities, ultimately aiming for a balanced and resilient portfolio.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Investment Education",
+                                            "description": "The Financial Advisor assesses the client's current understanding of investments and financial markets. They then create tailored educational materials or sessions that explain the intricacies of mutual funds, investment strategies, and market trends. This empowers clients to make informed decisions and increases their confidence in managing their investments.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Private Equity",
+                    "description": "This includes investments in private companies or buyouts of public companies, focusing on long-term value creation through strategic management, operational improvements, and financial restructuring.",
+                    "processed": false,
+                    "children": [
+                        {
+                            "name": "End Users - Providers",
+                            "description": "End Users who provide services or products.",
+                            "processed": false,
+                            "children": [
+                                {
+                                    "name": "Private Equity Associate",
+                                    "description": "This role involves conducting due diligence on potential investment opportunities, analyzing financial data, and assisting in the management of portfolio companies. Associates work closely with senior team members to evaluate investment strategies and support the overall investment process.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Identifying Investment Opportunities",
+                                            "description": "The process of researching and analyzing potential companies or assets for investment, including evaluating market trends, financial performance, and competitive positioning. This job involves gathering data, conducting due diligence, and assessing the strategic fit of the investment within the portfolio.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Creating Value in Portfolio Companies",
+                                            "description": "The process of implementing strategies to enhance the operational efficiency and financial performance of companies within the investment portfolio. This includes working closely with management teams to identify growth initiatives, optimize resources, and improve profitability, ultimately aiming to increase the overall value of the investment before exit.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Portfolio Manager",
+                                    "description": "A Portfolio Manager in private equity is responsible for overseeing the performance of the investment portfolio. This role includes making strategic decisions regarding asset allocation, monitoring market trends, and collaborating with management teams of portfolio companies to enhance operational efficiencies and drive value creation.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Achieving Optimal Returns",
+                                            "description": "The process of analyzing market trends, assessing various investment opportunities, and selecting assets that are expected to yield the highest returns for investors. This involves continuous monitoring and evaluation of the performance of the portfolio to ensure that it aligns with the set financial goals.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Providing Strategic Guidance",
+                                            "description": "The act of advising clients and stakeholders on investment decisions and strategies that align with their financial objectives. This includes conducting thorough research, presenting investment options, and helping clients understand the risks and benefits associated with their investment choices, ensuring informed decision-making.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "End Users - Customers",
+                            "description": "End Users who purchase services or products.",
+                            "processed": false,
+                            "children": [
+                                {
+                                    "name": "Private Equity Analyst",
+                                    "description": "This role involves analyzing potential investment opportunities, conducting due diligence, and monitoring portfolio performance. Private Equity Analysts use market data and financial models to assess the viability of investments and support decision-making processes.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Evaluating Investment Opportunities",
+                                            "description": "The process of analyzing potential investments by assessing financial performance, market conditions, and competitive positioning. This involves gathering data from various sources, performing quantitative and qualitative analyses, and ultimately determining the viability and expected return of the investment.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Conducting Due Diligence",
+                                            "description": "The systematic investigation and verification of a target company's financial, operational, and legal aspects before finalizing an investment. This includes reviewing financial statements, contracts, and compliance records, as well as interviewing key stakeholders to ensure a comprehensive understanding of the risks and potential of the investment.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Portfolio Manager",
+                                    "description": "A Portfolio Manager in the private equity sector is responsible for managing investment funds, strategizing asset allocations, and overseeing the performance of portfolio companies. They work to maximize returns for investors while balancing risk and are heavily involved in the operational and strategic direction of the investments.",
+                                    "processed": false,
+                                    "children": [
+                                        {
+                                            "name": "Achieving Target Returns",
+                                            "description": "The process of utilizing investment solutions to strategically allocate assets in a way that maximizes return on investment while adhering to risk tolerance levels and investment strategies. This involves analyzing market trends, evaluating performance metrics, and making informed decisions to meet or exceed predetermined financial goals.",
+                                            "processed": false,
+                                            "children": []
+                                        },
+                                        {
+                                            "name": "Identifying Investment Opportunities",
+                                            "description": "The systematic approach of scanning the market and leveraging data analytics to uncover potential investments that align with the portfolio's objectives. This includes conducting thorough due diligence, assessing the viability of companies or projects, and determining the expected value and growth potential of each opportunity before making investment decisions.",
+                                            "processed": false,
+                                            "children": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

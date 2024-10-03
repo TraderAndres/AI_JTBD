@@ -1,0 +1,82 @@
+# prompts/emotional_jobs.yaml
+
+description: |
+  Generates a complete list of emotions that can be experienced while performing the specified job, including both desired and undesired emotions.
+
+prompt: |
+  Act as a(n) {end_user} who is {job} {context}. Generate a complete list of emotions that can be experienced while {job} {context}. Explain step-by-step. Begin each desired emotion with "Feel". For example: "Feel Excited". Then generate a second list of emotions that you would want to avoid feeling. Explain step-by-step. Begin each undesired emotion with "Avoid Feeling". For example: "Avoid Feeling Sad".
+
+  Make group headings bold
+
+  Disregard context if none is provided
+
+  Output as a numbered list
+
+  Always output in markdown
+
+  The following is an example output for formatting purposes:
+
+  ===begin example===
+
+  **Desired Emotions:**
+
+  1. **Feel Motivated:** As a chief revenue officer, it is essential to feel motivated when generating profitable revenue growth to drive the team and achieve targets.
+
+  2. **Feel Confident:** Confidence is key when making decisions and implementing strategies that contribute to revenue growth.
+
+  3. …
+
+  **Undesired Emotions:**
+
+  1. **Avoid Feeling Overwhelmed:** A chief revenue officer should manage their workload and expectations to avoid feeling overwhelmed, which can negatively impact decision-making and productivity.
+
+  2. **Avoid Feeling Doubtful:** Doubt can hinder progress and create uncertainty, so it's essential to have confidence in strategies and decisions made to generate revenue growth.
+
+  3. …
+
+  ===end example===
+
+  Next, output the same list in survey format.
+
+  ===begin survey format===
+
+  For each emotion, output in a single table format, e.g., one continuous list. The table should begin with a title row that mentions the job and context. The next row should indicate levels of importance (Not important, Neutral, Important) and difficulty (Not difficult, Neutral, Difficult).
+
+  Please output the emotion in the following single table structure.
+
+  | When {{job}} {{context}}… | How important is it that you are able to… | | | How difficult is it for you to… | | |
+
+  | --- | --- | --- | --- | --- | --- | --- |
+
+  | | Not important | Neutral | Important | Not difficult | Neutral | Difficult |
+
+  | {{emotion 1}} | | | | | | |
+
+  | {{emotion 2}} | | | | | | |
+
+  | {{emotion n}} | | | | | | |
+
+  Always output in markdown
+
+  ===end survey format===
+
+  End user: {end_user}
+  Job: {job}
+  Context: {context}
+
+parameters:
+  end_user:
+    description: The role or title of the end user performing the job.
+    type: string
+    required: true
+  
+  job:
+    description: The specific job or task being analyzed.
+    type: string
+    required: true
+  
+  context:
+    description: Additional context or circumstances related to the job.
+    type: string
+    required: false  # If context is not always required, otherwise set to true
+    default: ""  # Default empty value if no context is provided

@@ -1,0 +1,45 @@
+{
+    "name": "Finance",
+    "description": "Finance industry hierarchy",
+    "processed": false,
+    "children": [
+        {
+            "name": "Banking",
+            "description": "Banking sector",
+            "processed": false,
+            "children": [
+                {
+                    "name": "Retail Banking",
+                    "description": "Services for individual consumers",
+                    "processed": false,
+                    "children": []
+                },
+                {
+                    "name": "Corporate Banking",
+                    "description": "Services for businesses",
+                    "processed": false,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "Investment",
+            "description": "Investment services",
+            "processed": false,
+            "children": [
+                {
+                    "name": "Asset Management",
+                    "description": "Managing client assets",
+                    "processed": false,
+                    "children": []
+                },
+                {
+                    "name": "Investment Banking",
+                    "description": "Advisory and capital raising",
+                    "processed": false,
+                    "children": []
+                }
+            ]
+        }
+    ]
+}

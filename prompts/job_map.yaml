@@ -1,134 +1,166 @@
-prompt:
-  description: |
-    Constructs the prompt for generating the Job Map.
-  content: |
-    Act as a(n) {end_user} with a deep expertise in Jobs-to-be-Done theory, which you will use here. As you know, Jobs have steps, much like a process, but they do not indicate how the {end_user} does something, they represent what the {end_user} must accomplish. Also, steps fall under 9 main phases. These phases are sequential. Each of the phases are explained below.
+# prompts/job_map.yaml
 
-    Explanation of Phases:
+description: |
+  Generates a detailed Job Map based on the Jobs-to-be-Done theory, outlining each step required to accomplish the job across different phases.
 
-    Do not assume a method or solution in any of these phases unless it is provided in the job or context inputs. For example, if the job is “Commuting to work” do not assume the commuter is using a personal vehicle. If the job is “Driving to a destination” then you can assume they are using a personal vehicle.
+prompt: |
+  Act as a(n) {end_user} with a deep expertise in Jobs-to-be-Done theory, which you will use here. As you know, Jobs have steps, much like a process, but they do not indicate how the {end_user} does something, they represent what the {end_user} must accomplish. Also, steps fall under 9 main phases. These phases are sequential. Each of the phases is explained below.
 
-    1. **Define**: in the define phase, we want to know what aspects of getting the job done need to be defined, planned, or assessed by the {end_user} upfront in order to proceed.
+  Explanation of Phases:
 
-    1. Include anything that needs to be defined, planned or determined prior to performing any of the subsequent steps.
+  Do not assume a method or solution in any of these phases unless it is provided in the job or context inputs. For example, if the job is “Commuting to work” do not assume the commuter is using a personal vehicle. If the job is “Driving to a destination” then you can assume they are using a personal vehicle.
 
-    2. If I’m driving a car to a destination, I might need to determine where I am going, where I can park, assess traffic conditions, and/or determine the available route options
+  1. **Define**: in the define phase, we want to know what aspects of getting the job done need to be defined, planned, or assessed by the {end_user} upfront in order to proceed.
+     1. Include anything that needs to be defined, planned or determined prior to performing any of the subsequent steps.
+     2. If I’m driving a car to a destination, I might need to determine where I am going, where I can park, assess traffic conditions, and/or determine the available route options.
 
-    2. **Locate**: in the locate phase, we want to know what items or resources - tangible or intangible - must be located, gathered, collected, accessed, or retrieved by the {end_user} to do the job.
+  2. **Locate**: in the locate phase, we want to know what items or resources - tangible or intangible - must be located, gathered, collected, accessed, or retrieved by the {end_user} to do the job.
+     1. Include anything that you might need access to and that you must take action in order to obtain it or them.
+     2. If I’m driving a car to a destination, I might need to locate my vehicle, find my driver's license, locate my glasses, etc.
 
-    1. Include anything that you might need access to and that you must take action in order to obtain it or them.
+  3. **Prepare**: in the prepare phase, we want to know how the {end_user} must prepare or integrate the inputs, or the environment(s), from the Locate step to do the job.
+     1. Include anything that might need attention or setup before executing the Job. The planning is done, and the necessary tangible or intangible resources have been obtained, but now they might need to be set up or configured to work together.
+     2. If I’m driving a car to a destination, I might need to inflate my tires to the proper pressure, or fill the gas tank to an adequate level, etc.
 
-    2. If I’m driving a car to a destination, I might need to locate my vehicle, find my drivers license, locate my glasses, etc.
+  4. **Confirm**: in the confirm phase, we want to know what the {end_user} must verify, prioritize, or decide before doing the job in order to be successful.
+     1. Include anything that is critical to double check, or any final decisions that must be made.
+     2. If I’m driving a car to a destination, I might need to select the best or fastest route, or verify that the car is in proper working order.
 
-    3. **Prepare:** in the prepare phase, we want to know how the {end_user} must prepare or integrate the inputs, or the environment(s), from the Locate step to do the job.
+  5. **Execute**: in the execute phase, we want to know the primary thing the {end_user} must do to execute the job successfully.
+     1. Include anything that is core to getting the job done, and would otherwise leave a gap in the process.
+     2. If I’m driving a car to a destination, the logical step would be “Drive to the destination”.
 
-    1. Include anything that might need attention or setup before executing the Job. The planning is done, and the necessary tangible or intangible resources have been obtained, but now they might need to be set up, or configured to work together
+  6. **Monitor**: in the monitor phase, we want to know what the {end_user} must monitor in order to ensure the job is executed successfully.
+     1. Include anything that should be checked in real-time, or while the execute step(s) are happening, to determine if something is going off track.
+     2. If I’m driving a car to a destination, I might want to monitor the fuel level, or my tire pressure, worsening traffic conditions, or emergency situations.
 
-    2. If I’m driving a car to a destination, I might need to inflate my tires to the proper pressure, or fill the gas tank to an adequate level, etc.
+  7. **Resolve**: in the resolve phase, we want to know what problem the {end_user} might need to troubleshoot, restore, or fix for the job to be completed successfully.
+     1. When a risk is identified we want to resolve it before it becomes an issue. If an issue emerges, we need to resolve it in order to proceed.
+     2. If I’m driving a car to a destination and I run low on fuel, I would want to find a gas station to fill my tank.
 
-    4. **Confirm:** in the confirm phase, we want to know what the {end_user} must verify, prioritize, or decide before doing the job in order to be successful.
+  8. **Modify**: in the modify phase, we want to know what the {end_user} might need to alter, adjust, or modify for the job to be completed successfully.
+     1. If I’m driving a car to a destination and traffic worsens, I may want to alter my route to one that has less car volume, or is moving at a faster pace.
 
-    1. Include anything that is critical to double-check, or any final decisions that must be made.
+  9. **Conclude**: in the conclude phase, we want to know what the {end_user} must do to finish the job.
+     1. If I’m driving a car to a destination, I may want to park my car, secure my belongings and/or make sure it’s still in good condition for the next drive.
 
-    2. If I’m driving a car to a destination, I might need to select the best or fastest route, or verify that the car is in proper working order.
+  The Job-to-be-Done for the {end_user} is {job} {context}. Only consider the context if one is supplied, otherwise disregard it. Generate a list of job steps that consider each of the phases. There should be a minimum of one step per phase. However, there could be more than one.
 
-    5. **Execute:** in the execute phase, we want to know the primary thing the {end_user} must do to execute the job successfully.
+  Steps should always begin with a verb. A bad step would be “Route Planning” and a good step would be “Plan the route.”
 
-    1. Include anything that is core to getting the job done and would otherwise leave a gap in the process.
+  The job steps should be focused on what the {end_user} is trying to accomplish faster, with better output, or better throughput when {job} in the context of {context}.
 
-    2. If I’m driving a car to a destination, the logical step would be “Drive to the destination”.
+  Do not reference the phase in a job step unless absolutely necessary.
 
-    6. **Monitor:** in the monitor phase, we want to know what the {end_user} must monitor in order to ensure the job is executed successfully.
+  ### Fidelity
 
-    1. Include anything that should be checked in real-time, or while the execute step(s) are happening, to determine if something is going off track.
+  An ideal job map will have 10 to 18 steps. If {fidelity} = ‘low’ then the number of steps should be closer to 10. If {fidelity} = ‘med’ then the number of steps should be closer to 14. If {fidelity} = ‘high’ then the number of steps should be closer to 18.
 
-    2. If I’m driving a car to a destination, I might want to monitor the fuel level, or my tire pressure, worsening traffic conditions, or emergency situations.
+  Example:
 
-    7. **Resolve:** in the resolve phase, we want to know what problem the {end_user} might need to troubleshoot, restore, or fix for the job to be completed successfully.
+  - Low = 10 - 12 steps
 
-    1. When a risk is identified we want to resolve it before it becomes an issue. If an issue emerges, we need to resolve it in order to proceed.
+  - Med = 13 - 15 steps
 
-    2. If I’m driving a car to a destination and I run low on fuel, I would want to find a gas station to fill my tank.
+  - High = 14 - 18 steps
 
-    8. **Modify**: in the modify phase, we want to know what the {end_user} might need to alter, adjust, or modify for the job to be completed successfully.
+  ### MECE
 
-    1. If I’m driving a car to a destination and traffic worsens, I may want to alter my route to one that has less car volume, or is moving at a faster pace.
+  The job steps should be mutually exclusive and collectively exhaustive (MECE) and also must be in a logical order of precedence and dependence.
 
-    9. **Conclude:** in the conclude phase, we want to know what the {end_user} must do to finish the job.
+  Think this through step-by-step.
 
-    1. If I’m driving a car to a destination, I may want to park my car, secure my belongings and/or make sure it’s still in good condition for the next drive.
+  ### Formatting
 
-    The Job-to-be-Done for the {end_user} is {job} {context}. Only consider the context if one is supplied, otherwise disregard it. Generate a list of job steps that consider each of the phases. There should be a minimum of one step per phase. However, there could be more than one.
+  Make the step name bold. Explain each job step, step by step, while adhering to the following explanation format. Make the explanations as rich as possible. Precede each explanation with the text "The ability to". Append the complete explanation to the job step, separated by a dash. Example:
 
-    Steps should always begin with a verb. A bad step would be “Route Planning” and a good step would be “Plan the route.”
+  1. **Obtain Necessary Permits** - The ability to secure transportation and operation permits for the heavy equipment, ensuring all legal requirements are met.
 
-    The job steps should be focused on what the {end_user} is trying to accomplish faster, with better output, or better throughput when {job} in the context of {context}.
+  ### Scoping
 
-    Do not reference the phase in a job step unless absolutely necessary.
+  The following constraints are to be used to provide specific boundaries to the Job Map. Follow them carefully.
 
-    ### Fidelity
+  - The first step will generally be about {start_point}. Give the step an appropriate name and format as previously described. Do not begin with anything that would logically precede this.
 
-    An ideal job map will have 10 to 18 steps. If {fidelity} = ‘low’ then the number of steps should be closer to 10. If {fidelity} = ‘med’ then the number of steps should be closer to 14. If {fidelity} = ‘high’ then the number of steps should be closer to 18.
+  - The last step will generally be about {end_point}. Give the step an appropriate name and format as previously described. Do not include any steps that come after this.
 
-    - Low = 10 - 12 steps
+  - Please follow all instructions carefully.
 
-    - Med = 13 - 15 steps
+  ### Reinforce Execution
 
-    - High = 14 - 18 steps
+  There must ALWAYS be a step for the EXECUTE phase and it should reflect the core objective of {job} {context}.
 
-    ### MECE
+  - There could be more than one step involved with execution.
 
-    The job steps should be mutually exclusive and collectively exhaustive (MECE) and also must be in a logical order of precedence and dependence.
+  EXAMPLE: if the Job is “driving to a destination in a car” then there should be a step like “Drive to the destination”
 
-    Think this through step-by-step.
+  ### Test Fit
 
-    ### Formatting
+  Finally, you need to run this through a test-fit structure to ensure that the statement makes sense. This is a quality check that you will do internally. You will not output this.  Here is the structure:
 
-    Make the step name bold. Explain each job step, step by step, while adhering to the following explanation format. Make the explanations as rich as possible. Precede each explanation with the text "The ability to". Append the complete explanation to the job step, separated by a hyphen. Example:
 
-    1. **Obtain Necessary Permits** - The ability to secure transportation and operation permits for the heavy equipment, ensuring all legal requirements are met.
+  As a(an) {end_user} + who is + {job} {context} you need to
 
-    ### Scoping
 
-    The following constraints are to be used to provide specific boundaries to the Job Map. Follow them carefully.
+  Does the success statement make grammatical sense? If so, output it. If not, rework it and test it again.
 
-    - The first step will generally be about {start point}. Give the step an appropriate name and format as previously described. Do not begin with anything that would logically precede this.
+  
+  ### Final Instructions
 
-    - The last step will generally be about {end point}. Give the step an appropriate name and format as previously described. Do not include any steps that come after this.
 
-    - Please follow all instructions carefully.
+  It is EXTREMELY important that you follow these instructions closely:
 
-    ### Reinforce Execution
+  1. Output as a single, ordered list in markdown format
 
-    There must ALWAYS be a step for the EXECUTE phase and it should reflect the core objective of {job} {context}.
+  2. Do not repeat the list
 
-    - There could be more than one step involved with execution.
+  3. Do not generate an opening statement summarizing what your are about to output
 
-    EXAMPLE: if the Job is “driving to a destination in a car” then there should be a step like “Drive to the destination”.
+  4. Do not output anything after the single list
 
-    ### Test Fit
+  5. Do not use the phase name in the step name
 
-    Finally, you need to run this through a test-fit structure to ensure that the statement makes sense. This is a quality check that you will do internally. You will not output this. Here is the structure:
+  6. Do not output a test-fit structure example
 
-    As a(an) {end_user} + who is + {Job} {context} you need to
 
-    Does the success statement make grammatical sense? If so, output it. If not, rework it and test it again.
+  job: {job}
+  context: {context}
+  end user: {end_user}
+  start point: {start_point}
+  end point: {end_point}
+  fidelity: {fidelity}
 
-    ### Final Instructions
+parameters:
+  end_user:
+    description: The role or title of the end user performing the job.
+    type: string
+    required: true
 
-    It is EXTREMELY important that you follow these instructions closely:
+  job:
+    description: The high-level job or task to be analyzed.
+    type: string
+    required: true
 
-    1. Output as a single, ordered list in markdown format.
-    2. Do not repeat the list.
-    3. Do not generate an opening statement summarizing what you are about to output.
-    4. Do not output anything after the single list.
-    5. Do not use the phase name in the step name.
-    6. Do not output a test-fit structure example.
+  context:
+    description: Additional context or circumstances related to the job.
+    type: string
+    required: false
+    default: ""  # Default empty value if no context is provided
 
-  parameters:
-    job: 
-    context: 
-    end_user: 
-    start_point: 
-    end_point: 
-    fidelity:
+  start_point: 
+    description: The starting point or initial phase of the job.
+    type: string
+    required: false
+    default: ""  # Default empty value if none is provided
+
+  end_point: 
+    description: The ending point or final stage of the job.
+    type: string
+    required: false
+    default: ""  # Default empty value if none is provided
+
+  fidelity:
+    description: The desired level of detail in the job map ('low', 'med', 'high').
+    type: string
+    required: false
+    default: "med"  # Default value set to "med" for medium-level detail
