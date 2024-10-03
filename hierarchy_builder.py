@@ -32,7 +32,7 @@ class HierarchyBuilder:
         # Initialize MongoDBManager if URI and DB name are provided
         if mongo_uri and db_name:
             self.mongo_manager = MongoDBManager(mongo_uri, db_name)
-            self.mongo_manager.set_collection('hierarchy_entries')  # Define a default collection name
+            self.mongo_manager.set_collection('jtbd_hierarchy')  # Define a default collection name
 
         os.makedirs(self.save_path, exist_ok=True)  # Ensure save directory exists
 
