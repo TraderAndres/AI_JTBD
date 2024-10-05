@@ -100,6 +100,20 @@ files = [
 ]
 
 [[package]]
+name = "bson"
+version = "0.5.10"
+description = "BSON codec for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "bson-0.5.10.tar.gz", hash = "sha256:d6511b2ab051139a9123c184de1a04227262173ad593429d21e443d6462d6590"},
+]
+
+[package.dependencies]
+python-dateutil = ">=2.4.0"
+six = ">=1.9.0"
+
+[[package]]
 name = "cachetools"
 version = "5.5.0"
 description = "Extensible memoizing collections and decorators"
@@ -1730,4 +1744,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10.0,<3.12"
-content-hash = "e2da900564ef35001e3f5968262ae0ea2cf282f8d1864bf5a10d7771efa43146"
+content-hash = "33719ea93cdf5d12e934aede72d3fc341e6189bea6c2b35e85657fd80924004e"

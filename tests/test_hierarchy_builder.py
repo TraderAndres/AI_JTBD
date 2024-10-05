@@ -1,5 +1,3 @@
-# tests/test_hierarchy_builder.py
-
 import unittest
 import json
 import os
@@ -7,6 +5,7 @@ from unittest.mock import MagicMock, patch
 from anytree import Node
 from hierarchy_builder import HierarchyBuilder
 from mongo_manager import MongoDBManager
+from bson.objectid import ObjectId  # Import ObjectId to generate unique identifiers
 
 # Sample responses for testing
 SECTORS_RESPONSE = """
@@ -53,8 +52,13 @@ class TestHierarchyBuilder(unittest.TestCase):
             db_name="test_db"
         )
 
-        # Inject the mocked MongoDBManager into the HierarchyBuilder
+        # Assign the mocked MongoDB manager and industry
         self.hierarchy_builder.mongo_manager = self.mock_mongo_manager_instance
+        self.hierarchy_builder.industry = "Finance"  # Ensure industry is set
+
+        # Debug print to confirm values
+        print(f"HierarchyBuilder MongoDB Manager: {self.hierarchy_builder.mongo_manager}")
+        print(f"Industry: {self.hierarchy_builder.industry}")
 
     def test_parse_list(self):
         # Test parsing a sectors response
@@ -74,31 +78,34 @@ class TestHierarchyBuilder(unittest.TestCase):
         ]
         self.assertEqual(parsed, expected)
 
-    def test_save_current_hierarchy(self):
+    def test_save_node_to_mongo(self):
         """
-        Test if the current hierarchy is saved correctly to MongoDB.
+        Test if a single node is saved correctly to MongoDB.
         """
-        # Setup a mock root node
-        self.hierarchy_builder.root = Node("Finance", description="Root node for industry hierarchy")
-        self.hierarchy_builder.industry = "Finance"
+        # Setup a mock root node with a unique node_id
+        root_node = Node("Finance", description="Root node for industry hierarchy", type="Industry", processed=False)
+        root_node.node_id = str(ObjectId())  # Assign a unique node ID to the root node
 
-        # Call the _save_current_hierarchy method
-        self.hierarchy_builder._save_current_hierarchy()
+        # Call the _save_node_to_mongo method
+        self.hierarchy_builder._save_node_to_mongo(root_node)
 
-        # Prepare expected document for insertion
+        # Prepare the expected document for insertion based on the root node
         expected_document = {
+            "node_id": root_node.node_id,
             "industry": "Finance",
-            "hierarchy": {
-                "name": "Finance",
-                "description": "Root node for industry hierarchy",
-                "processed": False,
-                "children": []
-            }
+            "name": "Finance",
+            "description": "Root node for industry hierarchy",
+            "processed": False,
+            "type": "Industry",
+            "parent_id": None,  # Root node has no parent
+            "children_ids": []  # No children yet
         }
 
-        # Assert that insert_entry or update_entry was called with the expected document
+        # Debugging information to check actual insert calls
+        print(f"Insert Entry Calls: {self.mock_mongo_manager_instance.insert_entry.call_args_list}")
+
+        # Assert that insert_entry was called with the expected document
         self.mock_mongo_manager_instance.insert_entry.assert_called_once_with(expected_document)
-        self.mock_mongo_manager_instance.update_entry.assert_not_called()
 
     def test_resume_from_saved_state(self):
         """
@@ -109,25 +116,28 @@ class TestHierarchyBuilder(unittest.TestCase):
             "name": "Finance",
             "description": "Root node for industry hierarchy",
             "processed": False,
-            "children": [
-                {
-                    "name": "Banking",
-                    "description": "Deals with deposit accounts, loans, and credit services.",
-                    "processed": False,
-                    "children": [
-                        {
-                            "name": "Retail Banking",
-                            "description": "Provides services to individual consumers.",
-                            "processed": False,
-                            "children": []
-                        }
-                    ]
-                }
-            ]
+            "node_id": str(ObjectId()),  # Mock the node ID
+            "children_ids": ["child_id_1", "child_id_2"]
         }
 
-        # Mock MongoDBManager find_entry method to return the saved hierarchy
-        self.mock_mongo_manager_instance.find_entry.return_value = {"hierarchy": saved_hierarchy}
+        # Mock child nodes entries for the root node
+        child_node_1 = {
+            "name": "Banking",
+            "description": "Deals with deposit accounts, loans, and credit services.",
+            "processed": False,
+            "node_id": "child_id_1",
+            "children_ids": []
+        }
+        child_node_2 = {
+            "name": "Investment",
+            "description": "Focuses on asset management, securities trading, and advisory services.",
+            "processed": False,
+            "node_id": "child_id_2",
+            "children_ids": []
+        }
+
+        # Set side effects for `find_entry` to return the root node and child nodes in sequence
+        self.mock_mongo_manager_instance.find_entry.side_effect = [child_node_1, child_node_2]
 
         # Call the resume method
         self.hierarchy_builder._resume_from_saved_state(saved_hierarchy)
@@ -141,9 +151,9 @@ class TestHierarchyBuilder(unittest.TestCase):
         self.assertEqual(banking_node.name, "Banking")
         self.assertEqual(banking_node.description, "Deals with deposit accounts, loans, and credit services.")
 
-        retail_node = banking_node.children[0]
-        self.assertEqual(retail_node.name, "Retail Banking")
-        self.assertEqual(retail_node.description, "Provides services to individual consumers.")
+        investment_node = self.hierarchy_builder.root.children[1]
+        self.assertEqual(investment_node.name, "Investment")
+        self.assertEqual(investment_node.description, "Focuses on asset management, securities trading, and advisory services.")
 
     def test_build_hierarchy_from_scratch(self):
         """
@@ -164,13 +174,9 @@ class TestHierarchyBuilder(unittest.TestCase):
             "Prompt for jtbd_customers": JOBS_RESPONSE
         }.get(prompt, "")
 
-        # Ensure that the MongoDB mock has insert_entry and update_entry set up
-        print(f"Before build: MongoDB insert_entry called {self.mock_mongo_manager_instance.insert_entry.call_count} times")
-        print(f"Before build: MongoDB update_entry called {self.mock_mongo_manager_instance.update_entry.call_count} times")
-
         # Build the hierarchy from scratch with the correct industry parameter
         root = self.hierarchy_builder.build_hierarchy(
-            industry=self.hierarchy_builder.industry,  # Pass the correct industry here
+            industry=self.hierarchy_builder.industry,
             fidelity="comprehensive",
             n_end_users=2,
             n_jobs=2
@@ -178,11 +184,6 @@ class TestHierarchyBuilder(unittest.TestCase):
 
         # Check that the MongoDB insert_entry method was called multiple times during hierarchy building
         self.assertGreater(self.mock_mongo_manager_instance.insert_entry.call_count, 0, "MongoDB insert_entry was not called during hierarchy building")
-
-        # Additional debugging information after build
-        print(f"After build: MongoDB insert_entry called {self.mock_mongo_manager_instance.insert_entry.call_count} times")
-
-
 
 if __name__ == '__main__':
     unittest.main()

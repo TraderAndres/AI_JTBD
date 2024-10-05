@@ -1,4 +1,6 @@
+- Audit how the data is saved to the MONGO DB, is it overwriting the WHOLE thing each time?  or just updating the new nodes?  ALso reduce the number of times saving to DB!!!
+- Get DOWNSTREAM working!  
+- consider adding vector search (note atlas has vector search!)
+- parallelize the layers so can get the results MUCH faster.  Need to figure out throughput limits.  If do this, you'll need to create some rate limit exceptions with exponential back-off sleep if you hit them.  See this page: https://platform.openai.com/docs/guides/rate-limits/error-mitigation?context=tier-one
 - use function calling for more consistent outputs.
-- parallelize the layers so can get the results MUCH faster.  Need to figure out throughput limits. 
-- consider adding vector search
 

@@ -1,5 +1,10 @@
 # mongo_manager.py
+import logging
+from bson import ObjectId
 from pymongo import MongoClient
+
+# Adjust logging level for MongoDB client operations
+logging.getLogger("pymongo").setLevel(logging.WARNING)
 
 class MongoDBManager:
     def __init__(self, uri, db_name):
